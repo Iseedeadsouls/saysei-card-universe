@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaySei CardUniverse</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #0d0d14;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game {
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        .balance {
+            margin-bottom: 30px;
+            color: #ffd75a;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #25253a, #11111d);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .card-icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+        }
+
+        .card-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .rarity {
+            margin-top: 8px;
+            color: #b48cff;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: #6c4cff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>🎴 SaySei</h1>
+    <div>CardUniverse</div>
+
+    <div class="balance">
+        💰 Монеты: <span id="coins">1000</span>
+    </div>
+
+    <div class="card">
+        <div class="card-icon" id="icon">🎁</div>
+        <div class="card-name" id="name">
+            Открой свой первый пак
+        </div>
+        <div class="rarity" id="rarity">
+            ?
+        </div>
+    </div>
+
+    <button onclick="openPack()">
+        🎁 ОТКРЫТЬ ПАК — 100 💰
+    </button>
+
+</div>
+
+<script>
+
+let coins = 1000;
+
+const cards = [
+    {
+        name: "Обычная карта",
+        rarity: "Common",
+        icon: "⚪"
+    },
+    {
+        name: "Необычная карта",
+        rarity: "Uncommon",
+        icon: "🟢"
+    },
+    {
+        name: "Редкая карта",
+        rarity: "Rare",
+        icon: "🔵"
+    },
+    {
+        name: "Эпическая карта",
+        rarity: "Epic",
+        icon: "🟣"
+    },
+    {
+        name: "Легендарная карта",
+        rarity: "Legendary",
+        icon: "🟡"
+    }
+];
+
+function openPack() {
+
+    if (coins < 100) {
+        alert("Недостаточно монет!");
+        return;
+    }
+
+    coins -= 100;
+
+    document.getElementById("coins").textContent = coins;
+
+    const randomCard =
+        cards[Math.floor(Math.random() * cards.length)];
+
+    document.getElementById("icon").textContent =
+        randomCard.icon;
+
+    document.getElementById("name").textContent =
+        randomCard.name;
+
+    document.getElementById("rarity").textContent =
+        randomCard.rarity;
+}
+
+</script>
+
+</body>
+</html>
