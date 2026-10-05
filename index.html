@@ -6,9 +6,7 @@
 <title>SaySei CardUniverse</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -24,22 +22,9 @@ body {
     padding: 22px 0 40px;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 18px;
-}
-
-.logo {
-    font-size: 30px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-.subtitle {
-    margin-top: 5px;
-    color: #a99ab9;
-    font-size: 13px;
-}
+.header { text-align: center; margin-bottom: 18px; }
+.logo { font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+.subtitle { margin-top: 5px; color: #a99ab9; font-size: 13px; }
 
 .balance {
     margin: 16px auto;
@@ -69,25 +54,12 @@ body {
     transition: .2s;
 }
 
-.menu button.active {
-    background: linear-gradient(135deg, #8c45ff, #5c23c9);
-}
+.menu button.active { background: linear-gradient(135deg, #8c45ff, #5c23c9); }
+.menu button.inactive { background: rgba(255,255,255,.08); }
+.menu button:active { transform: scale(.97); }
 
-.menu button.inactive {
-    background: rgba(255,255,255,.08);
-}
-
-.menu button:active {
-    transform: scale(.97);
-}
-
-.section {
-    display: none;
-}
-
-.section.active {
-    display: block;
-}
+.section { display: none; }
+.section.active { display: block; }
 
 .card {
     position: relative;
@@ -109,51 +81,15 @@ body {
     pointer-events: none;
 }
 
-.card-icon {
-    position: relative;
-    z-index: 1;
-    font-size: 100px;
-    margin: 32px 0 20px;
-}
+.card-icon { position: relative; z-index: 1; font-size: 100px; margin: 32px 0 20px; }
 
-.card-id,
-.card-rarity,
-.card-name,
-.card-role,
-.card-chance {
-    position: relative;
-    z-index: 1;
-}
+.card-id, .card-rarity, .card-name, .card-role, .card-chance { position: relative; z-index: 1; }
 
-.card-id {
-    color: #8e809c;
-    font-size: 13px;
-}
-
-.card-rarity {
-    margin-top: 10px;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.card-name {
-    margin-top: 10px;
-    font-size: 27px;
-    font-weight: 900;
-}
-
-.card-role {
-    margin-top: 7px;
-    color: #b4a7bf;
-    font-size: 14px;
-}
-
-.card-chance {
-    margin-top: 15px;
-    color: #d7c7e7;
-    font-size: 13px;
-}
+.card-id { color: #8e809c; font-size: 13px; }
+.card-rarity { margin-top: 10px; font-size: 12px; font-weight: 900; letter-spacing: 1px; }
+.card-name { margin-top: 10px; font-size: 27px; font-weight: 900; }
+.card-role { margin-top: 7px; color: #b4a7bf; font-size: 14px; }
+.card-chance { margin-top: 15px; color: #d7c7e7; font-size: 13px; }
 
 .open-button {
     width: 100%;
@@ -169,10 +105,7 @@ body {
     box-shadow: 0 10px 25px rgba(117,44,220,.3);
 }
 
-.open-button:disabled {
-    opacity: .45;
-    cursor: default;
-}
+.open-button:disabled { opacity: .45; cursor: default; }
 
 .daily-box {
     margin-top: 14px;
@@ -183,16 +116,8 @@ body {
     text-align: center;
 }
 
-.daily-title {
-    font-size: 16px;
-    font-weight: 900;
-}
-
-.daily-subtitle {
-    margin-top: 5px;
-    color: #a99ab9;
-    font-size: 12px;
-}
+.daily-title { font-size: 16px; font-weight: 900; }
+.daily-subtitle { margin-top: 5px; color: #a99ab9; font-size: 12px; }
 
 .daily-button {
     width: 100%;
@@ -206,32 +131,22 @@ body {
     cursor: pointer;
 }
 
-.daily-button:disabled {
-    opacity: .45;
-    cursor: default;
-}
+.daily-button:disabled { opacity: .45; cursor: default; }
 
-.collection-title,
-.profile-title,
-.shop-title {
+.collection-title, .profile-title, .shop-title {
     text-align: center;
     font-size: 24px;
     font-weight: 900;
 }
 
-.collection-subtitle,
-.shop-subtitle {
+.collection-subtitle, .shop-subtitle {
     text-align: center;
     margin: 6px 0 18px;
     color: #a99ab9;
     font-size: 13px;
 }
 
-.collection-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
+.collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 
 .collection-card {
     padding: 16px 10px;
@@ -241,20 +156,16 @@ body {
     text-align: center;
 }
 
-.collection-icon {
-    font-size: 42px;
-}
+.collection-icon { font-size: 42px; }
+.collection-name { margin-top: 7px; font-size: 15px; font-weight: 900; }
+.collection-count { margin-top: 5px; color: #aa9ab8; font-size: 12px; }
 
-.collection-name {
-    margin-top: 7px;
-    font-size: 15px;
-    font-weight: 900;
-}
-
-.collection-count {
-    margin-top: 5px;
-    color: #aa9ab8;
-    font-size: 12px;
+.collection-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #a99ab9;
+    font-size: 13px;
+    padding: 20px 0;
 }
 
 .profile-card {
@@ -265,51 +176,16 @@ body {
     text-align: center;
 }
 
-.profile-avatar {
-    font-size: 75px;
-}
+.profile-avatar { font-size: 75px; }
+.profile-name { margin-top: 10px; font-size: 25px; font-weight: 900; }
+.profile-label { margin-top: 5px; color: #a99ab9; font-size: 12px; letter-spacing: 1px; }
 
-.profile-name {
-    margin-top: 10px;
-    font-size: 25px;
-    font-weight: 900;
-}
+.profile-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 22px; }
+.profile-stat { padding: 15px 8px; border-radius: 15px; background: rgba(0,0,0,.18); }
+.profile-stat-value { font-size: 22px; font-weight: 900; }
+.profile-stat-label { margin-top: 4px; color: #a99ab9; font-size: 11px; }
 
-.profile-label {
-    margin-top: 5px;
-    color: #a99ab9;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-.profile-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 22px;
-}
-
-.profile-stat {
-    padding: 15px 8px;
-    border-radius: 15px;
-    background: rgba(0,0,0,.18);
-}
-
-.profile-stat-value {
-    font-size: 22px;
-    font-weight: 900;
-}
-
-.profile-stat-label {
-    margin-top: 4px;
-    color: #a99ab9;
-    font-size: 11px;
-}
-
-.shop-grid {
-    display: grid;
-    gap: 12px;
-}
+.shop-grid { display: grid; gap: 12px; }
 
 .shop-card {
     padding: 17px;
@@ -318,27 +194,10 @@ body {
     border: 1px solid rgba(255,255,255,.09);
 }
 
-.shop-icon {
-    font-size: 35px;
-}
-
-.shop-name {
-    margin-top: 7px;
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.shop-description {
-    margin-top: 5px;
-    color: #a99ab9;
-    font-size: 12px;
-    line-height: 1.4;
-}
-
-.shop-price {
-    margin-top: 12px;
-    font-weight: 900;
-}
+.shop-icon { font-size: 35px; }
+.shop-name { margin-top: 7px; font-size: 18px; font-weight: 900; }
+.shop-description { margin-top: 5px; color: #a99ab9; font-size: 12px; line-height: 1.4; }
+.shop-price { margin-top: 12px; font-weight: 900; }
 
 .shop-buy {
     width: 100%;
@@ -352,14 +211,9 @@ body {
     cursor: pointer;
 }
 
-.shop-buy:disabled {
-    opacity: .45;
-    cursor: default;
-}
+.shop-buy:disabled { opacity: .45; cursor: default; }
 
-.opening {
-    animation: shake .16s infinite;
-}
+.opening { animation: shake .16s infinite; }
 
 @keyframes shake {
     0% { transform: translateX(0) rotate(0); }
@@ -427,9 +281,7 @@ body {
 
     <div class="section" id="collectionSection">
         <div class="collection-title">🃏 КОЛЛЕКЦИЯ</div>
-        <div class="collection-subtitle">
-            Собранные тобой карты
-        </div>
+        <div class="collection-subtitle">Собранные тобой карты</div>
         <div class="collection-grid" id="collectionGrid"></div>
     </div>
 
@@ -446,7 +298,6 @@ body {
                     <div class="profile-stat-value" id="profileCards">0</div>
                     <div class="profile-stat-label">КАРТ СОБРАНО</div>
                 </div>
-
                 <div class="profile-stat">
                     <div class="profile-stat-value" id="profileCoins">1000</div>
                     <div class="profile-stat-label">МОНЕТ</div>
@@ -457,58 +308,40 @@ body {
 
     <div class="section" id="shopSection">
         <div class="shop-title">🛒 МАГАЗИН</div>
-        <div class="shop-subtitle">
-            Выбирай пак и испытывай удачу
-        </div>
+        <div class="shop-subtitle">Выбирай пак и испытывай удачу</div>
 
         <div class="shop-grid">
 
             <div class="shop-card">
                 <div class="shop-icon">🎁</div>
                 <div class="shop-name">Обычный пак</div>
-                <div class="shop-description">
-                    Стандартные шансы выпадения карт.
-                </div>
+                <div class="shop-description">Стандартные шансы выпадения карт.</div>
                 <div class="shop-price">100 💰</div>
-                <button class="shop-buy" data-pack="normal">
-                    КУПИТЬ
-                </button>
+                <button class="shop-buy" data-pack="normal">КУПИТЬ</button>
             </div>
 
             <div class="shop-card">
                 <div class="shop-icon">🍀</div>
                 <div class="shop-name">Lucky Pack</div>
-                <div class="shop-description">
-                    Повышенный шанс на редкие и эпические карты.
-                </div>
+                <div class="shop-description">Повышенный шанс на редкие и эпические карты.</div>
                 <div class="shop-price">250 💰</div>
-                <button class="shop-buy" data-pack="lucky">
-                    КУПИТЬ
-                </button>
+                <button class="shop-buy" data-pack="lucky">КУПИТЬ</button>
             </div>
 
             <div class="shop-card">
                 <div class="shop-icon">💎</div>
                 <div class="shop-name">Premium Pack</div>
-                <div class="shop-description">
-                    Сильное повышение шансов на высокую редкость.
-                </div>
+                <div class="shop-description">Сильное повышение шансов на высокую редкость.</div>
                 <div class="shop-price">500 💰</div>
-                <button class="shop-buy" data-pack="premium">
-                    КУПИТЬ
-                </button>
+                <button class="shop-buy" data-pack="premium">КУПИТЬ</button>
             </div>
 
             <div class="shop-card">
                 <div class="shop-icon">🔥</div>
                 <div class="shop-name">Legend Pack</div>
-                <div class="shop-description">
-                    Максимальный упор на легендарные и мифические карты.
-                </div>
+                <div class="shop-description">Максимальный упор на легендарные и мифические карты.</div>
                 <div class="shop-price">1000 💰</div>
-                <button class="shop-buy" data-pack="legend">
-                    КУПИТЬ
-                </button>
+                <button class="shop-buy" data-pack="legend">КУПИТЬ</button>
             </div>
 
         </div>
@@ -517,217 +350,72 @@ body {
 </div>
 
 <script>
-let coins =
-    Number(
-        localStorage.getItem("saysei_coins")
-    ) || 1000;
 
-let collection =
-    JSON.parse(
-        localStorage.getItem("saysei_collection")
-    ) || {};
+let coins = Number(localStorage.getItem("saysei_coins")) || 1000;
 
-let dailyRewardTime =
-    Number(
-        localStorage.getItem("saysei_daily_reward")
-    ) || 0;
+let collection = {};
+try {
+    collection = JSON.parse(localStorage.getItem("saysei_collection")) || {};
+} catch (e) {
+    collection = {};
+}
+
+let dailyRewardTime = Number(localStorage.getItem("saysei_daily_reward")) || 0;
 
 let isOpening = false;
 
+const DAILY_REWARD = 250;
+const DAILY_COOLDOWN = 24 * 60 * 60 * 1000;
+
 const cards = [
-    {
-        id: 1,
-        name: "SaySei",
-        rarity: "MYTHIC",
-        chance: 0.05,
-        icon: "🌙",
-        role: "Главная героиня"
-    },
-    {
-        id: 2,
-        name: "iseedeadsouls",
-        rarity: "MYTHIC",
-        chance: 0.01,
-        icon: "👁️",
-        role: "Создатель вселенной"
-    },
-    {
-        id: 3,
-        name: "Странник",
-        rarity: "COMMON",
-        chance: 19.98,
-        icon: "⚪",
-        role: "Житель вселенной"
-    },
-    {
-        id: 4,
-        name: "Новичок",
-        rarity: "COMMON",
-        chance: 19.98,
-        icon: "⚪",
-        role: "Житель вселенной"
-    },
-    {
-        id: 5,
-        name: "Охотник",
-        rarity: "COMMON",
-        chance: 19.98,
-        icon: "⚪",
-        role: "Охотник"
-    },
-    {
-        id: 6,
-        name: "Воин",
-        rarity: "UNCOMMON",
-        chance: 8.33,
-        icon: "🟢",
-        role: "Воин"
-    },
-    {
-        id: 7,
-        name: "Разведчик",
-        rarity: "UNCOMMON",
-        chance: 8.33,
-        icon: "🟢",
-        role: "Разведчик"
-    },
-    {
-        id: 8,
-        name: "Маг",
-        rarity: "UNCOMMON",
-        chance: 8.33,
-        icon: "🟢",
-        role: "Маг"
-    },
-    {
-        id: 9,
-        name: "Аскеладд",
-        rarity: "RARE",
-        chance: 1.66,
-        icon: "🔵",
-        role: "Стратег"
-    }    {
-        id: 10,
-        name: "Денджи",
-        rarity: "RARE",
-        chance: 1.66,
-        icon: "🔵",
-        role: "Охотник на демонов"
-    },
-    {
-        id: 11,
-        name: "Клинок",
-        rarity: "RARE",
-        chance: 1.68,
-        icon: "🔵",
-        role: "Воин"
-    },
-    {
-        id: 12,
-        name: "Макима",
-        rarity: "EPIC",
-        chance: 0.44,
-        icon: "🟣",
-        role: "Контроль"
-    },
-    {
-        id: 13,
-        name: "Демон",
-        rarity: "EPIC",
-        chance: 0.44,
-        icon: "🟣",
-        role: "Сущность"
-    },
-    {
-        id: 14,
-        name: "Повелитель",
-        rarity: "EPIC",
-        chance: 0.45,
-        icon: "🟣",
-        role: "Властитель"
-    },
-    {
-        id: 15,
-        name: "Бог войны",
-        rarity: "LEGENDARY",
-        chance: 0.12,
-        icon: "🟡",
-        role: "Божественная сущность"
-    },
-    {
-        id: 16,
-        name: "Король мира",
-        rarity: "LEGENDARY",
-        chance: 0.12,
-        icon: "🟡",
-        role: "Верховный правитель"
-    },
-    {
-        id: 17,
-        name: "Избранный",
-        rarity: "LEGENDARY",
-        chance: 0.12,
-        icon: "🟡",
-        role: "Избранный"
-    },
-    {
-        id: 18,
-        name: "???",
-        rarity: "MYTHIC",
-        chance: 0.01,
-        icon: "🔴",
-        role: "Неизвестно"
-    }
+    { id: 1,  name: "SaySei",        rarity: "MYTHIC",    chance: 0.05,  icon: "🌙", role: "Главная героиня" },
+    { id: 2,  name: "iseedeadsouls", rarity: "MYTHIC",    chance: 0.01,  icon: "👁️", role: "Создатель вселенной" },
+    { id: 3,  name: "SaySei",      rarity: "COMMON",    chance: 19.98, icon: "⚪", role: "Обычная SaySei" },
+    { id: 4,  name: "SaySei",       rarity: "COMMON",    chance: 19.98, icon: "⚪", role: "Обычная SaySei" },
+    { id: 5,  name: "SaySei",       rarity: "COMMON",    chance: 19.98, icon: "⚪", role: "Обычная SaySei" },
+    { id: 6,  name: "SaySei",          rarity: "UNCOMMON",  chance: 8.33,  icon: "🟢", role: "Необычная SaySei" },
+    { id: 7,  name: "SaySei",     rarity: "UNCOMMON",  chance: 8.33,  icon: "🟢", role: "Необычная SaySei" },
+    { id: 8,  name: "SaySei",           rarity: "UNCOMMON",  chance: 8.33,  icon: "🟢", role: "Необычная SaySei" },
+    { id: 9,  name: "SaySei",      rarity: "RARE",      chance: 1.66,  icon: "🔵", role: "Редкая SaySei" },
+    { id: 10, name: "SaySei",        rarity: "RARE",      chance: 1.66,  icon: "🔵", role: "Редкая SaySei" },
+    { id: 11, name: "SaySei",        rarity: "RARE",      chance: 1.68,  icon: "🔵", role: "Редкая SaySei" },
+    { id: 12, name: "SaySei",        rarity: "EPIC",      chance: 0.44,  icon: "🟣", role: "Эпическая SaySei" },
+    { id: 13, name: "SaySei",         rarity: "EPIC",      chance: 0.44,  icon: "🟣", role: "Эпическая SaySei" },
+    { id: 14, name: "SaySei",    rarity: "EPIC",      chance: 0.45,  icon: "🟣", role: "Эпическая SaySei" },
+    { id: 15, name: "SaySei",     rarity: "LEGENDARY", chance: 0.12,  icon: "🟡", role: "Легендарная SaySei" },
+    { id: 16, name: "SaySei",   rarity: "LEGENDARY", chance: 0.12,  icon: "🟡", role: "Легендарная SaySei" },
+    { id: 17, name: "SaySei",     rarity: "LEGENDARY", chance: 0.12,  icon: "🟡", role: "Легендарная SaySei" },
+    { id: 18, name: "SaySei",           rarity: "MYTHIC",    chance: 0.01,  icon: "🔴", role: "Мифическая SaySei" }
 ];
 
 function saveGame() {
-    localStorage.setItem(
-        "saysei_coins",
-        coins
-    );
-
-    localStorage.setItem(
-        "saysei_collection",
-        JSON.stringify(collection)
-    );
+    localStorage.setItem("saysei_coins", coins);
+    localStorage.setItem("saysei_collection", JSON.stringify(collection));
 }
 
 function updateCoins() {
-    document.getElementById("coins").textContent =
-        coins;
-
-    document.getElementById("profileCoins").textContent =
-        coins;
+    document.getElementById("coins").textContent = coins;
+    document.getElementById("profileCoins").textContent = coins;
 }
 
 function setPackButtonsDisabled(disabled) {
-    document.getElementById("openButton").disabled =
-        disabled;
+    document.getElementById("openButton").disabled = disabled;
 
-    document
-        .querySelectorAll(".shop-buy")
-        .forEach(function(button) {
-            button.disabled = disabled;
-        });
+    document.querySelectorAll(".shop-buy").forEach(function(button) {
+        button.disabled = disabled;
+    });
 }
 
 function getRandomCard(pool = cards) {
-    const total =
-        pool.reduce(
-            function(sum, card) {
-                return sum + card.chance;
-            },
-            0
-        );
+    const total = pool.reduce(function(sum, card) {
+        return sum + card.chance;
+    }, 0);
 
-    const random =
-        Math.random() * total;
-
+    const random = Math.random() * total;
     let current = 0;
 
     for (const card of pool) {
         current += card.chance;
-
         if (random < current) {
             return card;
         }
@@ -737,13 +425,9 @@ function getRandomCard(pool = cards) {
 }
 
 function getActualChance(card, pool) {
-    const total =
-        pool.reduce(
-            function(sum, item) {
-                return sum + item.chance;
-            },
-            0
-        );
+    const total = pool.reduce(function(sum, item) {
+        return sum + item.chance;
+    }, 0);
 
     if (!total) return 0;
 
@@ -752,53 +436,18 @@ function getActualChance(card, pool) {
 
 function makePackPool(type) {
     const multipliers = {
-        normal: {
-            COMMON: 1,
-            UNCOMMON: 1,
-            RARE: 1,
-            EPIC: 1,
-            LEGENDARY: 1,
-            MYTHIC: 1
-        },
-
-        lucky: {
-            COMMON: 0.55,
-            UNCOMMON: 1.5,
-            RARE: 2.5,
-            EPIC: 3,
-            LEGENDARY: 3,
-            MYTHIC: 1
-        },
-
-        premium: {
-            COMMON: 0.25,
-            UNCOMMON: 0.6,
-            RARE: 1.5,
-            EPIC: 3,
-            LEGENDARY: 5,
-            MYTHIC: 2
-        },
-
-        legend: {
-            COMMON: 0.1,
-            UNCOMMON: 0.2,
-            RARE: 0.5,
-            EPIC: 2,
-            LEGENDARY: 8,
-            MYTHIC: 4
-        }
+        normal:  { COMMON: 1,    UNCOMMON: 1,   RARE: 1,   EPIC: 1, LEGENDARY: 1, MYTHIC: 1 },
+        lucky:   { COMMON: 0.55, UNCOMMON: 1.5, RARE: 2.5, EPIC: 3, LEGENDARY: 3, MYTHIC: 1 },
+        premium: { COMMON: 0.25, UNCOMMON: 0.6, RARE: 1.5, EPIC: 3, LEGENDARY: 5, MYTHIC: 2 },
+        legend:  { COMMON: 0.1,  UNCOMMON: 0.2, RARE: 0.5, EPIC: 2, LEGENDARY: 8, MYTHIC: 4 }
     };
 
-    const selected =
-        multipliers[type] ||
-        multipliers.normal;
+    const selected = multipliers[type] || multipliers.normal;
 
     return cards.map(function(card) {
         return {
             ...card,
-            chance:
-                card.chance *
-                selected[card.rarity]
+            chance: card.chance * selected[card.rarity]
         };
     });
 }
@@ -814,81 +463,39 @@ function openPackWithCost(cost, pool) {
     isOpening = true;
 
     coins -= cost;
-
     updateCoins();
     saveGame();
 
-    const button =
-        document.getElementById("openButton");
+    const card = document.getElementById("card");
 
-    const card =
-        document.getElementById("card");
-
-    button.disabled = true;
-
-    document
-        .querySelectorAll(".shop-buy")
-        .forEach(function(shopButton) {
-            shopButton.disabled = true;
-        });
+    setPackButtonsDisabled(true);
 
     card.classList.add("opening");
 
-    document.getElementById("cardIcon").textContent =
-        "✨";
-
-    document.getElementById("cardId").textContent =
-        "#???";
-
-    document.getElementById("cardRarity").textContent =
-        "OPENING";
-
-    document.getElementById("cardName").textContent =
-        "Открываем...";
-
-    document.getElementById("cardRole").textContent =
-        "Определяем судьбу...";
-
-    document.getElementById("cardChance").textContent =
-        "Определяем карту...";
+    document.getElementById("cardIcon").textContent = "✨";
+    document.getElementById("cardId").textContent = "#???";
+    document.getElementById("cardRarity").textContent = "OPENING";
+    document.getElementById("cardRarity").className = "card-rarity";
+    document.getElementById("cardName").textContent = "Открываем...";
+    document.getElementById("cardRole").textContent = "Определяем судьбу...";
+    document.getElementById("cardChance").textContent = "Определяем карту...";
 
     setTimeout(function() {
-
-        const result =
-            getRandomCard(pool);
-
-        const actualChance =
-            getActualChance(
-                result,
-                pool
-            );
+        const result = getRandomCard(pool);
+        const actualChance = getActualChance(result, pool);
 
         card.classList.remove("opening");
 
-        document.getElementById("cardIcon").textContent =
-            result.icon;
-
+        document.getElementById("cardIcon").textContent = result.icon;
         document.getElementById("cardId").textContent =
-            "#" +
-            String(result.id).padStart(3, "0");
-
-        document.getElementById("cardRarity").textContent =
-            result.rarity;
-
+            "#" + String(result.id).padStart(3, "0");
+        document.getElementById("cardRarity").textContent = result.rarity;
         document.getElementById("cardRarity").className =
-            "card-rarity " +
-            result.rarity.toLowerCase();
-
-        document.getElementById("cardName").textContent =
-            result.name;
-
-        document.getElementById("cardRole").textContent =
-            result.role;
-
+            "card-rarity " + result.rarity.toLowerCase();
+        document.getElementById("cardName").textContent = result.name;
+        document.getElementById("cardRole").textContent = result.role;
         document.getElementById("cardChance").textContent =
-            "Шанс в этом паке: " +
-            actualChance.toFixed(3) +
-            "%";
+            "Шанс в этом паке: " + actualChance.toFixed(3) + "%";
 
         if (!collection[result.id]) {
             collection[result.id] = 0;
@@ -897,76 +504,42 @@ function openPackWithCost(cost, pool) {
         collection[result.id]++;
 
         saveGame();
-
         renderCollection();
         updateProfile();
 
         isOpening = false;
-
         setPackButtonsDisabled(false);
-
     }, 1200);
 }
 
 function openPack() {
-    openPackWithCost(
-        100,
-        makePackPool("normal")
-    );
+    openPackWithCost(100, makePackPool("normal"));
 }
 
 function buyPack(type) {
-
     if (isOpening) return;
 
     const packs = {
-        normal: {
-            cost: 100,
-            name: "Обычный пак"
-        },
-
-        lucky: {
-            cost: 250,
-            name: "Lucky Pack"
-        },
-
-        premium: {
-            cost: 500,
-            name: "Premium Pack"
-        },
-
-        legend: {
-            cost: 1000,
-            name: "Legend Pack"
-        }
+        normal:  { cost: 100,  name: "Обычный пак" },
+        lucky:   { cost: 250,  name: "Lucky Pack" },
+        premium: { cost: 500,  name: "Premium Pack" },
+        legend:  { cost: 1000, name: "Legend Pack" }
     };
 
-    const pack =
-        packs[type];
+    const pack = packs[type];
 
     if (!pack) return;
 
     if (coins < pack.cost) {
-        alert(
-            "Недостаточно монет!\n\n" +
-            "Нужно: " +
-            pack.cost +
-            " 💰"
-        );
-
+        alert("Недостаточно монет!\n\nНужно: " + pack.cost + " 💰");
         return;
     }
 
     showSection("game");
-
-    openPackWithCost(
-        pack.cost,
-        makePackPool(type)
-    );
+    openPackWithCost(pack.cost, makePackPool(type));
 }
 
 function showSection(section) {
-
     const sections = {
         game: "gameSection",
         collection: "collectionSection",
@@ -974,341 +547,141 @@ function showSection(section) {
         shop: "shopSection"
     };
 
-    Object.keys(sections).forEach(
-        function(key) {
-            document
-                .getElementById(
-                    sections[key]
-                )
-                .classList.remove("active");
-        }
-    );
+    const buttons = {
+        game: "menuGame",
+        collection: "menuCollection",
+        profile: "menuProfile",
+        shop: "shopButton"
+    };
 
-    document
-        .getElementById(
-            sections[section]
-        )
-        .classList.add("active");
+    Object.keys(sections).forEach(function(key) {
+        document.getElementById(sections[key]).classList.toggle("active", key === section);
 
-    document
-        .getElementById("menuGame")
-        .classList.toggle(
-            "active",
-            section === "game"
-        );
+        const button = document.getElementById(buttons[key]);
+        button.classList.toggle("active", key === section);
+        button.classList.toggle("inactive", key !== section);
+    });
 
-    document
-        .getElementById("menuGame")
-        .classList.toggle(
-            "inactive",
-            section !== "game"
-        );
-
-    document
-        .getElementById("menuCollection")
-        .classList.toggle(
-            "active",
-            section === "collection"
-        );
-
-    document
-        .getElementById("menuCollection")
-        .classList.toggle(
-            "inactive",
-            section !== "collection"
-        );
-
-    document
-        .getElementById("menuProfile")
-        .classList.toggle(
-            "active",
-            section === "profile"
-        );
-
-    document
-        .getElementById("menuProfile")
-        .classList.toggle(
-            "inactive",
-            section !== "profile"
-        );
-
-    document
-        .getElementById("shopButton")
-        .classList.toggle(
-            "active",
-            section === "shop"
-        );
-
-    document
-        .getElementById("shopButton")
-        .classList.toggle(
-            "inactive",
-            section !== "shop"
-        );
-
-    if (section === "collection") {
-        renderCollection();
-    }
-
-    if (section === "profile") {
-        updateProfile();
-    }
+    if (section === "collection") renderCollection();
+    if (section === "profile") updateProfile();
 }
 
 function renderCollection() {
-
-    const grid =
-        document.getElementById(
-            "collectionGrid"
-        );
-
+    const grid = document.getElementById("collectionGrid");
     grid.innerHTML = "";
 
-    let collected = 0;
-
-    cards.forEach(function(card) {
-
-        const count =
-            Number(
-                collection[card.id]
-            ) || 0;
-
-        if (count > 0) {
-            collected++;
-        }
-
-        const item =
-            document.createElement("div");
-
-        item.className =
-            "collection-card";
-
-        item.innerHTML =
-            '<div class="collection-icon">' +
-                card.icon +
-            '</div>' +
-            '<div class="collection-name">' +
-                card.name +
-            '</div>' +
-            '<div class="collection-count">' +
-                "Получено: " +
-                count +
-            '</div>';
-
-        grid.appendChild(item);
+    const owned = cards.filter(function(card) {
+        return Number(collection[card.id]) > 0;
     });
 
-    document.getElementById(
-        "profileCards"
-    ).textContent = collected;
+    if (owned.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "collection-empty";
+        empty.textContent = "Пока нет карт. Открой первый пак!";
+        grid.appendChild(empty);
+        return;
+    }
+
+    owned.forEach(function(card) {
+        const count = Number(collection[card.id]);
+
+        const item = document.createElement("div");
+        item.className = "collection-card";
+
+        const icon = document.createElement("div");
+        icon.className = "collection-icon";
+        icon.textContent = card.icon;
+
+        const name = document.createElement("div");
+        name.className = "collection-name " + card.rarity.toLowerCase();
+        name.textContent = card.name;
+
+        const counter = document.createElement("div");
+        counter.className = "collection-count";
+        counter.textContent =
+            "#" + String(card.id).padStart(3, "0") +
+            " • " + card.rarity +
+            " • x" + count;
+
+        item.appendChild(icon);
+        item.appendChild(name);
+        item.appendChild(counter);
+        grid.appendChild(item);
+    });
 }
 
 function updateProfile() {
+    const unique = cards.filter(function(card) {
+        return Number(collection[card.id]) > 0;
+    }).length;
 
-    let collected = 0;
-
-    cards.forEach(function(card) {
-
-        if (
-            (Number(
-                collection[card.id]
-            ) || 0) > 0
-        ) {
-            collected++;
-        }
-    });
-
-    document.getElementById(
-        "profileCards"
-    ).textContent =
-        collected;
-
-    document.getElementById(
-        "profileCoins"
-    ).textContent =
-        coins;
+    document.getElementById("profileCards").textContent = unique;
+    document.getElementById("profileCoins").textContent = coins;
 }
 
-function updateDailyReward() {
+function formatTime(ms) {
+    const total = Math.max(0, Math.ceil(ms / 1000));
+    const h = String(Math.floor(total / 3600)).padStart(2, "0");
+    const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+    const s = String(total % 60).padStart(2, "0");
 
-    const button =
-        document.getElementById(
-            "dailyButton"
-        );
+    return h + ":" + m + ":" + s;
+}
 
-    const text =
-        document.getElementById(
-            "dailyText"
-        );
+function updateDaily() {
+    const text = document.getElementById("dailyText");
+    const button = document.getElementById("dailyButton");
 
-    const now =
-        Date.now();
+    const left = dailyRewardTime + DAILY_COOLDOWN - Date.now();
 
-    const cooldown =
-        24 * 60 * 60 * 1000;
-
-    const remaining =
-        cooldown -
-        (now - dailyRewardTime);
-
-    if (remaining <= 0) {
-
+    if (left > 0) {
+        button.disabled = true;
+        text.textContent = "Следующая награда через " + formatTime(left);
+    } else {
         button.disabled = false;
-
-        button.textContent =
-            "ЗАБРАТЬ 250 💰";
-
-        text.textContent =
-            "Забери 250 💰 раз в 24 часа";
-
-        return;
+        text.textContent = "Забери " + DAILY_REWARD + " 💰 раз в 24 часа";
     }
-
-    button.disabled = true;
-
-    const totalSeconds =
-        Math.floor(
-            remaining / 1000
-        );
-
-    const hours =
-        Math.floor(
-            totalSeconds / 3600
-        );
-
-    const minutes =
-        Math.floor(
-            (totalSeconds % 3600) / 60
-        );
-
-    const seconds =
-        totalSeconds % 60;
-
-    text.textContent =
-        "Следующая награда через " +
-        String(hours).padStart(2, "0") +
-        ":" +
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(seconds).padStart(2, "0");
-
-    button.textContent =
-        "НАГРАДА НЕДОСТУПНА";
 }
 
-function claimDailyReward() {
+function claimDaily() {
+    const left = dailyRewardTime + DAILY_COOLDOWN - Date.now();
 
-    const now =
-        Date.now();
-
-    const cooldown =
-        24 * 60 * 60 * 1000;
-
-    if (
-        now - dailyRewardTime <
-        cooldown
-    ) {
+    if (left > 0) {
+        updateDaily();
         return;
     }
 
-    coins += 250;
+    coins += DAILY_REWARD;
+    dailyRewardTime = Date.now();
 
-    dailyRewardTime =
-        now;
+    localStorage.setItem("saysei_daily_reward", dailyRewardTime);
 
-    localStorage.setItem(
-        "saysei_daily_reward",
-        dailyRewardTime
-    );
-
-    updateCoins();
-    updateProfile();
     saveGame();
-    updateDailyReward();
+    updateCoins();
+    updateDaily();
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
+document.getElementById("menuGame").addEventListener("click", function() { showSection("game"); });
+document.getElementById("menuCollection").addEventListener("click", function() { showSection("collection"); });
+document.getElementById("menuProfile").addEventListener("click", function() { showSection("profile"); });
+document.getElementById("shopButton").addEventListener("click", function() { showSection("shop"); });
 
-        updateCoins();
-        renderCollection();
-        updateProfile();
-        updateDailyReward();
+document.getElementById("openButton").addEventListener("click", openPack);
+document.getElementById("dailyButton").addEventListener("click", claimDaily);
 
-        document
-            .getElementById("menuGame")
-            .addEventListener(
-                "click",
-                function() {
-                    showSection("game");
-                }
-            );
+document.querySelectorAll(".shop-buy").forEach(function(button) {
+    button.addEventListener("click", function() {
+        buyPack(button.dataset.pack);
+    });
+});
 
-        document
-            .getElementById("menuCollection")
-            .addEventListener(
-                "click",
-                function() {
-                    showSection("collection");
-                }
-            );
+updateCoins();
+renderCollection();
+updateProfile();
+updateDaily();
 
-        document
-            .getElementById("menuProfile")
-            .addEventListener(
-                "click",
-                function() {
-                    showSection("profile");
-                }
-            );
+setInterval(updateDaily, 1000);
 
-        document
-            .getElementById("shopButton")
-            .addEventListener(
-                "click",
-                function() {
-                    showSection("shop");
-                }
-            );
-
-        document
-            .getElementById("openButton")
-            .addEventListener(
-                "click",
-                openPack
-            );
-
-        document
-            .getElementById("dailyButton")
-            .addEventListener(
-                "click",
-                claimDailyReward
-            );
-
-        document
-            .querySelectorAll(".shop-buy")
-            .forEach(function(button) {
-
-                button.addEventListener(
-                    "click",
-                    function() {
-
-                        buyPack(
-                            button.dataset.pack
-                        );
-
-                    }
-                );
-
-            });
-
-        setInterval(
-            updateDailyReward,
-            1000
-        );
-    }
-);
 </script>
 
 </body>
