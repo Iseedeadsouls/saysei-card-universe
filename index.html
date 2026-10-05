@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,6 +9,10 @@
 <title>SaySei CardUniverse</title>
 
 <style>
+
+/* =========================
+   ОСНОВА
+========================= */
 
 * {
     box-sizing: border-box;
@@ -33,41 +38,131 @@ body {
     width: 100%;
     max-width: 430px;
     margin: auto;
+
     padding: 22px 16px 40px;
 }
 
+
+/* =========================
+   ЛОГО
+========================= */
+
 .logo {
     text-align: center;
+
     font-size: 29px;
     font-weight: 900;
+
     letter-spacing: 3px;
 }
 
 .subtitle {
     text-align: center;
+
     color: #999;
+
     font-size: 13px;
+
     letter-spacing: 4px;
+
     margin-top: 4px;
 }
 
+
+/* =========================
+   БАЛАНС
+========================= */
+
 .balance {
     margin: 22px 0;
+
     padding: 12px;
 
     border-radius: 14px;
 
     background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
     color: #ffd95a;
+
     text-align: center;
+
     font-size: 18px;
+
     font-weight: bold;
 }
 
 
-/* MAIN CARD */
+/* =========================
+   НАВИГАЦИЯ
+========================= */
+
+.menu {
+    display: flex;
+
+    gap: 9px;
+
+    margin-bottom: 20px;
+}
+
+.menu button {
+    flex: 1;
+
+    margin-top: 0;
+
+    padding: 12px 6px;
+
+    font-size: 12px;
+
+    border-radius: 12px;
+
+    box-shadow: none;
+}
+
+.menu .active {
+    background:
+        linear-gradient(
+            135deg,
+            #7655ff,
+            #5131d1
+        );
+
+    border-color: transparent;
+}
+
+.menu .inactive {
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color: #aaa;
+
+    box-shadow: none;
+}
+
+
+/* =========================
+   СЕКЦИИ
+========================= */
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+
+/* =========================
+   ОСНОВНАЯ КАРТА
+========================= */
 
 .card {
     position: relative;
@@ -85,10 +180,13 @@ body {
             #0d0d15
         );
 
-    border: 2px solid rgba(255,255,255,.12);
+    border:
+        2px solid
+        rgba(255,255,255,.12);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.65);
+        0 25px 70px
+        rgba(0,0,0,.65);
 
     display: flex;
 
@@ -96,25 +194,7 @@ body {
 
     align-items: center;
 
-    justify-content: flex-end/* MAIN MENU */
-
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.menu button {
-    margin-top: 0;
-}
-
-.menu .collection-button {
-    margin-top: 0;
-}
-
-
-/* MAIN CARD */;
+    justify-content: flex-end;
 
     padding: 25px;
 
@@ -131,7 +211,8 @@ body {
 
     border-radius: 50%;
 
-    background: rgba(120,80,255,.18);
+    background:
+        rgba(120,80,255,.18);
 
     filter: blur(60px);
 
@@ -160,11 +241,14 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     overflow: hidden;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 }
 
 .card-art-symbol {
@@ -172,7 +256,8 @@ body {
 
     filter:
         drop-shadow(
-            0 15px 25px rgba(0,0,0,.6)
+            0 15px 25px
+            rgba(0,0,0,.6)
         );
 }
 
@@ -186,7 +271,8 @@ body {
 
     border-radius: 8px;
 
-    background: rgba(0,0,0,.55);
+    background:
+        rgba(0,0,0,.55);
 
     font-size: 12px;
 
@@ -203,7 +289,8 @@ body {
 
     border-radius: 8px;
 
-    background: rgba(0,0,0,.55);
+    background:
+        rgba(0,0,0,.55);
 
     font-size: 11px;
 
@@ -214,6 +301,7 @@ body {
     position: relative;
 
     font-size: 27px;
+
     font-weight: 900;
 
     margin-top: 10px;
@@ -233,6 +321,8 @@ body {
     letter-spacing: 1px;
 
     text-transform: uppercase;
+
+    text-align: center;
 }
 
 .card-chance {
@@ -246,7 +336,9 @@ body {
 }
 
 
-/* BUTTONS */
+/* =========================
+   КНОПКИ
+========================= */
 
 button {
     width: 100%;
@@ -273,7 +365,8 @@ button {
         );
 
     box-shadow:
-        0 8px 25px rgba(100,70,255,.3);
+        0 8px 25px
+        rgba(100,70,255,.3);
 }
 
 button:active {
@@ -284,27 +377,10 @@ button:disabled {
     opacity: .5;
 }
 
-.collection-button {
-    background:
-        linear-gradient(
-            135deg,
-            #29283c,
-            #151520
-        );
 
-    box-shadow: none;
-
-    border: 1px solid rgba(255,255,255,.1);
-}
-
-
-/* COLLECTION */
-
-.collection {
-    display: none;
-
-    margin-top: 28px;
-}
+/* =========================
+   КОЛЛЕКЦИЯ
+========================= */
 
 .collection-title {
     font-size: 24px;
@@ -347,7 +423,9 @@ button:disabled {
             #101016
         );
 
-    border: 1px solid rgba(255,255,255,.08);
+    border:
+        1px solid
+        rgba(255,255,255,.08);
 
     overflow: hidden;
 }
@@ -379,7 +457,8 @@ button:disabled {
     top: 17px;
     left: 17px;
 
-    background: rgba(0,0,0,.6);
+    background:
+        rgba(0,0,0,.6);
 
     padding: 3px 6px;
 
@@ -427,7 +506,109 @@ button:disabled {
 }
 
 
-/* RARITIES */
+/* =========================
+   ПРОФИЛЬ
+========================= */
+
+.profile-box {
+    padding: 25px 20px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #20202e,
+            #101016
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #7655ff,
+            #25174d
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 40px;
+
+    box-shadow:
+        0 0 35px
+        rgba(120,80,255,.35);
+}
+
+.profile-name {
+    font-size: 23px;
+
+    font-weight: 900;
+}
+
+.profile-label {
+    color: #777;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+}
+
+.profile-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.profile-stat {
+    padding: 15px 8px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.profile-stat-number {
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.profile-stat-label {
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   РЕДКОСТИ
+========================= */
 
 .common {
     color: #aaa;
@@ -453,11 +634,14 @@ button:disabled {
     color: #ff4b5c;
 
     text-shadow:
-        0 0 15px rgba(255,60,80,.8);
+        0 0 15px
+        rgba(255,60,80,.8);
 }
 
 
-/* CARD RARITY EFFECTS */
+/* =========================
+   ЭФФЕКТЫ КАРТ
+========================= */
 
 .card.common {
     border-color: #555;
@@ -471,43 +655,60 @@ button:disabled {
     border-color: #428de0;
 
     box-shadow:
-        0 0 30px rgba(70,150,255,.25),
-        0 25px 70px rgba(0,0,0,.6);
+        0 0 30px
+        rgba(70,150,255,.25),
+
+        0 25px 70px
+        rgba(0,0,0,.6);
 }
 
 .card.epic {
     border-color: #984cff;
 
     box-shadow:
-        0 0 40px rgba(160,70,255,.3),
-        0 25px 70px rgba(0,0,0,.6);
+        0 0 40px
+        rgba(160,70,255,.3),
+
+        0 25px 70px
+        rgba(0,0,0,.6);
 }
 
 .card.legendary {
     border-color: #e8bb22;
 
     box-shadow:
-        0 0 50px rgba(255,210,50,.3),
-        0 25px 70px rgba(0,0,0,.6);
+        0 0 50px
+        rgba(255,210,50,.3),
+
+        0 25px 70px
+        rgba(0,0,0,.6);
 }
 
 .card.mythic {
     border-color: #ff334f;
 
     box-shadow:
-        0 0 60px rgba(255,40,70,.4),
-        0 25px 70px rgba(0,0,0,.6);
+        0 0 60px
+        rgba(255,40,70,.4),
+
+        0 25px 70px
+        rgba(0,0,0,.6);
 }
 
 
-/* CREATOR CARD */
+/* =========================
+   CREATOR
+========================= */
 
 .card.creator {
     border-color: #ffffff;
 
     box-shadow:
-        0 0 70px rgba(255,255,255,.45),
-        0 25px 70px rgba(0,0,0,.7);
+        0 0 70px
+        rgba(255,255,255,.45),
+
+        0 25px 70px
+        rgba(0,0,0,.7);
 }
 
 .creator-text {
@@ -515,10 +716,13 @@ button:disabled {
 }
 
 
-/* ANIMATION */
+/* =========================
+   АНИМАЦИЯ
+========================= */
 
 .opening {
-    animation: shake .45s infinite;
+    animation:
+        shake .45s infinite;
 }
 
 @keyframes shake {
@@ -552,9 +756,10 @@ button:disabled {
 
 <body>
 
-
 <div class="game">
 
+
+    <!-- LOGO -->
 
     <div class="logo">
         🎴 SAYSEI
@@ -565,98 +770,127 @@ button:disabled {
     </div>
 
 
+    <!-- BALANCE -->
+
     <div class="balance">
         💰 <span id="coins">1000</span>
     </div>
-<div class="menu">
-
-    <button onclick="showSection('game')">
-        🎁 ОТКРЫТЬ ПАК
-    </button>
-
-    <button
-        class="collection-button"
-        onclick="showSection('collection')"
-    >
-        🃏 КОЛЛЕКЦИЯ
-    </button>
-
-    <button
-        class="collection-button"
-        onclick="showSection('profile')"
-    >
-        👤 ПРОФИЛЬ
-    </button>
-
-</div>
-
-    <div class="card" id="card">
 
 
-        <div class="card-art">
+    <!-- MENU -->
 
-            <div class="card-id" id="cardId">
-                #???
-            </div>
+    <div class="menu">
 
-            <div class="card-rarity" id="cardRarity">
-                CARD
-            </div>
-
-            <div
-                class="card-art-symbol"
-                id="icon"
-            >
-                🎁
-            </div>
-
-        </div>
-
-
-        <div class="card-name" id="name">
-            Открой свой пак
-        </div>
-
-
-        <div
-            class="card-role"
-            id="role"
+        <button
+            id="menuGame"
+            class="active"
+            onclick="showSection('game')"
         >
-            SAYSEI CARDUNIVERSE
-        </div>
+            🎁 ПАК
+        </button>
 
-
-        <div
-            class="card-chance"
-            id="chance"
+        <button
+            id="menuCollection"
+            class="inactive"
+            onclick="showSection('collection')"
         >
-            Стоимость: 100 💰
-        </div>
+            🃏 КОЛЛЕКЦИЯ
+        </button>
 
+        <button
+            id="menuProfile"
+            class="inactive"
+            onclick="showSection('profile')"
+        >
+            👤 ПРОФИЛЬ
+        </button>
 
     </div>
 
 
-    <button
-        onclick="openPack()"
-        id="openButton"
-    >
-        🎁 ОТКРЫТЬ ПАК — 100 💰
-    </button>
-
-
-    <button
-        class="collection-button"
-        onclick="toggleCollection()"
-        id="collectionButton"
-    >
-        🃏 МОЯ КОЛЛЕКЦИЯ
-    </button>
-
+    <!-- =========================
+         ИГРА
+    ========================== -->
 
     <div
-        class="collection"
-        id="collection"
+        class="section active"
+        id="gameSection"
+    >
+
+        <div
+            class="card"
+            id="card"
+        >
+
+            <div class="card-art">
+
+                <div
+                    class="card-id"
+                    id="cardId"
+                >
+                    #???
+                </div>
+
+                <div
+                    class="card-rarity"
+                    id="cardRarity"
+                >
+                    CARD
+                </div>
+
+                <div
+                    class="card-art-symbol"
+                    id="icon"
+                >
+                    🎁
+                </div>
+
+            </div>
+
+
+            <div
+                class="card-name"
+                id="name"
+            >
+                Открой свой пак
+            </div>
+
+
+            <div
+                class="card-role"
+                id="role"
+            >
+                SAYSEI CARDUNIVERSE
+            </div>
+
+
+            <div
+                class="card-chance"
+                id="chance"
+            >
+                Стоимость: 100 💰
+            </div>
+
+        </div>
+
+
+        <button
+            onclick="openPack()"
+            id="openButton"
+        >
+            🎁 ОТКРЫТЬ ПАК — 100 💰
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         КОЛЛЕКЦИЯ
+    ========================== -->
+
+    <div
+        class="section"
+        id="collectionSection"
     >
 
         <div class="collection-title">
@@ -664,12 +898,15 @@ button:disabled {
         </div>
 
         <div class="collection-subtitle">
+
             Собрано:
             <span id="collectionCount">
                 0
             </span>
             / 18
+
         </div>
+
 
         <div
             class="collection-grid"
@@ -679,11 +916,79 @@ button:disabled {
     </div>
 
 
+    <!-- =========================
+         ПРОФИЛЬ
+    ========================== -->
+
+    <div
+        class="section"
+        id="profileSection"
+    >
+
+        <div class="profile-box">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div class="profile-name">
+                Игрок
+            </div>
+
+            <div class="profile-label">
+                SAYSEI CARDUNIVERSE
+            </div>
+
+
+            <div class="profile-stats">
+
+                <div class="profile-stat">
+
+                    <div
+                        class="profile-stat-number"
+                        id="profileCards"
+                    >
+                        0
+                    </div>
+
+                    <div class="profile-stat-label">
+                        КАРТ СОБРАНО
+                    </div>
+
+                </div>
+
+
+                <div class="profile-stat">
+
+                    <div
+                        class="profile-stat-number"
+                        id="profileCoins"
+                    >
+                        0
+                    </div>
+
+                    <div class="profile-stat-label">
+                        МОНЕТ
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
 </div>
 
 
 <script>
 
+
+/* =========================
+   СОХРАНЕНИЕ
+========================= */
 
 let coins =
     Number(
@@ -701,17 +1006,9 @@ let collection =
     ) || {};
 
 
-/*
-    SAYSEI CARDUNIVERSE
-    ОСНОВНЫЕ ПЕРСОНАЖИ:
-
-    #001 SAYSEI
-    #002 ISEEDEADSOULS
-
-    Остальные персонажи пока
-    являются частью первой коллекции.
-*/
-
+/* =========================
+   КАРТЫ
+========================= */
 
 const cards = [
 
@@ -734,7 +1031,6 @@ const cards = [
         class: "creator",
         role: "Создатель вселенной"
     },
-
 
     {
         id: 3,
@@ -766,7 +1062,6 @@ const cards = [
         role: "Охотник"
     },
 
-
     {
         id: 6,
         name: "Воин",
@@ -796,7 +1091,6 @@ const cards = [
         class: "uncommon",
         role: "Маг"
     },
-
 
     {
         id: 9,
@@ -828,7 +1122,6 @@ const cards = [
         role: "Воин"
     },
 
-
     {
         id: 12,
         name: "Макима",
@@ -858,7 +1151,6 @@ const cards = [
         class: "epic",
         role: "Властитель"
     },
-
 
     {
         id: 15,
@@ -890,7 +1182,6 @@ const cards = [
         role: "Избранный"
     },
 
-
     {
         id: 18,
         name: "???",
@@ -903,6 +1194,10 @@ const cards = [
 
 ];
 
+
+/* =========================
+   СОХРАНИТЬ ДАННЫЕ
+========================= */
 
 function saveData() {
 
@@ -918,6 +1213,105 @@ function saveData() {
 
 }
 
+
+/* =========================
+   ПЕРЕКЛЮЧЕНИЕ РАЗДЕЛОВ
+========================= */
+
+function showSection(section) {
+
+    const game =
+        document.getElementById(
+            "gameSection"
+        );
+
+    const collectionSection =
+        document.getElementById(
+            "collectionSection"
+        );
+
+    const profile =
+        document.getElementById(
+            "profileSection"
+        );
+
+
+    const menuGame =
+        document.getElementById(
+            "menuGame"
+        );
+
+    const menuCollection =
+        document.getElementById(
+            "menuCollection"
+        );
+
+    const menuProfile =
+        document.getElementById(
+            "menuProfile"
+        );
+
+
+    game.classList.remove("active");
+
+    collectionSection.classList.remove(
+        "active"
+    );
+
+    profile.classList.remove(
+        "active"
+    );
+
+
+    menuGame.className = "inactive";
+
+    menuCollection.className =
+        "inactive";
+
+    menuProfile.className =
+        "inactive";
+
+
+    if (section === "game") {
+
+        game.classList.add("active");
+
+        menuGame.className = "active";
+
+    }
+
+
+    if (section === "collection") {
+
+        collectionSection.classList.add(
+            "active"
+        );
+
+        menuCollection.className =
+            "active";
+
+        renderCollection();
+
+    }
+
+
+    if (section === "profile") {
+
+        profile.classList.add("active");
+
+        menuProfile.className =
+            "active";
+
+        updateProfile();
+
+    }
+
+}
+
+
+/* =========================
+   СЛУЧАЙНАЯ КАРТА
+========================= */
 
 function getRandomCard() {
 
@@ -945,8 +1339,11 @@ function getRandomCard() {
 }
 
 
-function openPack() {
+/* =========================
+   ОТКРЫТИЕ ПАКА
+========================= */
 
+function openPack() {
 
     if (coins < 100) {
 
@@ -1007,272 +1404,4 @@ function openPack() {
     document.getElementById(
         "name"
     ).textContent =
-        "Открываем...";
-
-
-    document.getElementById(
-        "role"
-    ).textContent =
-        "Определяем судьбу...";
-
-
-    document.getElementById(
-        "chance"
-    ).textContent =
-        "Определяем карту...";
-
-
-    setTimeout(() => {
-
-
-        const result =
-            getRandomCard();
-
-
-        document.getElementById(
-            "icon"
-        ).textContent =
-            result.icon;
-
-
-        document.getElementById(
-            "cardId"
-        ).textContent =
-            "#" +
-            String(result.id)
-                .padStart(3, "0");
-
-
-        document.getElementById(
-            "cardRarity"
-        ).textContent =
-            result.rarity;
-
-
-        document.getElementById(
-            "name"
-        ).textContent =
-            result.name;
-
-
-        document.getElementById(
-            "role"
-        ).textContent =
-            result.role;
-
-
-        document.getElementById(
-            "chance"
-        ).textContent =
-            "Шанс выпадения: " +
-            result.chance +
-            "%";
-
-
-        cardElement.className =
-            "card " +
-            result.class;
-
-
-        if (!collection[result.id]) {
-
-            collection[result.id] = {
-
-                count: 0,
-
-                name: result.name,
-
-                rarity: result.rarity,
-
-                class: result.class,
-
-                role: result.role
-
-            };
-
-        }
-
-
-        collection[result.id].count++;
-
-
-        saveData();
-
-
-        button.disabled = false;
-
-
-        renderCollection();
-
-
-    }, 1200);
-
-}
-
-
-function toggleCollection() {
-
-
-    const element =
-        document.getElementById(
-            "collection"
-        );
-
-
-    const button =
-        document.getElementById(
-            "collectionButton"
-        );
-
-
-    if (
-        element.style.display ===
-        "block"
-    ) {
-
-        element.style.display =
-            "none";
-
-
-        button.textContent =
-            "🃏 МОЯ КОЛЛЕКЦИЯ";
-
-
-    } else {
-
-        element.style.display =
-            "block";
-
-
-        button.textContent =
-            "🔽 СКРЫТЬ КОЛЛЕКЦИЮ";
-
-
-        renderCollection();
-
-    }
-
-}
-
-
-function renderCollection() {
-
-
-    const grid =
-        document.getElementById(
-            "collectionGrid"
-        );
-
-
-    grid.innerHTML = "";
-
-
-    let collected = 0;
-
-
-    cards.forEach(card => {
-
-
-        const owned =
-            collection[card.id];
-
-
-        if (owned) {
-
-            collected++;
-
-        }
-
-
-        const element =
-            document.createElement(
-                "div"
-            );
-
-
-        element.className =
-            "collection-card " +
-            (
-                owned
-                ? ""
-                : "unknown"
-            );
-
-
-        element.innerHTML = `
-
-            <div class="collection-art">
-
-                ${
-                    owned
-                    ? card.icon
-                    : "?"
-                }
-
-            </div>
-
-            <div class="collection-number">
-
-                #${String(card.id).padStart(3,"0")}
-
-            </div>
-
-            <div class="collection-name">
-
-                ${
-                    owned
-                    ? card.name
-                    : "???"
-                }
-
-            </div>
-
-            <div class="collection-rarity ${card.class}">
-
-                ${
-                    owned
-                    ? "✦ " + card.rarity + " ✦"
-                    : "UNKNOWN"
-                }
-
-            </div>
-
-            <div class="collection-count">
-
-                ${
-                    owned
-                    ? "Получено: x" +
-                      owned.count
-                    : "Не получена"
-                }
-
-            </div>
-
-        `;
-
-
-        grid.appendChild(element);
-
-    });
-
-
-    document.getElementById(
-        "collectionCount"
-    ).textContent =
-        collected;
-
-}
-
-
-document.getElementById(
-    "coins"
-).textContent = coins;
-
-
-renderCollection();
-
-
-</script>
-
-</body>
-</html>
+    
