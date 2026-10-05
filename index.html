@@ -1,159 +1,372 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SaySei CardUniverse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #0d0d14;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<title>SaySei CardUniverse</title>
 
-        .game {
-            width: 90%;
-            max-width: 420px;
-            text-align: center;
-        }
+<style>
 
-        h1 {
-            margin-bottom: 5px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .balance {
-            margin-bottom: 30px;
-            color: #ffd75a;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #29234d 0%, #0d0b16 45%, #07070c 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
 
-        .card {
-            background: linear-gradient(145deg, #25253a, #11111d);
-            border-radius: 20px;
-            padding: 40px 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
+.game {
+    width: 100%;
+    max-width: 430px;
+    padding: 25px 18px;
+    text-align: center;
+}
 
-        .card-icon {
-            font-size: 80px;
-            margin-bottom: 15px;
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
 
-        .card-name {
-            font-size: 24px;
-            font-weight: bold;
-        }
+.subtitle {
+    color: #aaa;
+    margin-top: 4px;
+}
 
-        .rarity {
-            margin-top: 8px;
-            color: #b48cff;
-        }
+.balance {
+    margin: 25px 0;
+    padding: 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    color: #ffd95a;
+    font-size: 18px;
+}
 
-        button {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 14px;
-            background: #6c4cff;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+.card {
+    height: 360px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #222235, #11111b);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
 
-        button:active {
-            transform: scale(0.97);
-        }
-    </style>
+.card-icon {
+    font-size: 100px;
+    margin-bottom: 25px;
+}
+
+.card-name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.rarity {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chance {
+    margin-top: 7px;
+    color: #999;
+    font-size: 13px;
+}
+
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 17px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #7655ff, #5435d6);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 8px 25px rgba(100,70,255,0.35);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.opening {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.common {
+    color: #aaa;
+}
+
+.uncommon {
+    color: #52d273;
+}
+
+.rare {
+    color: #54a8ff;
+}
+
+.epic {
+    color: #b66cff;
+}
+
+.legendary {
+    color: #ffd43b;
+}
+
+.mythic {
+    color: #ff4b5c;
+    text-shadow: 0 0 15px rgba(255,60,80,0.8);
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="game">
 
-    <h1>🎴 SaySei</h1>
-    <div>CardUniverse</div>
+    <div class="logo">🎴 SAYSEI</div>
+    <div class="subtitle">CARD UNIVERSE</div>
 
     <div class="balance">
-        💰 Монеты: <span id="coins">1000</span>
+        💰 <span id="coins">1000</span>
     </div>
 
-    <div class="card">
-        <div class="card-icon" id="icon">🎁</div>
-        <div class="card-name" id="name">
-            Открой свой первый пак
+    <div class="card" id="card">
+
+        <div class="card-icon" id="icon">
+            🎁
         </div>
+
+        <div class="card-name" id="name">
+            Открой свой пак
+        </div>
+
         <div class="rarity" id="rarity">
             ?
         </div>
+
+        <div class="chance" id="chance">
+            Стоимость: 100 💰
+        </div>
+
     </div>
 
-    <button onclick="openPack()">
+    <button onclick="openPack()" id="openButton">
         🎁 ОТКРЫТЬ ПАК — 100 💰
     </button>
 
 </div>
 
+
 <script>
 
 let coins = 1000;
 
-const cards = [
+const rarities = [
+
     {
-        name: "Обычная карта",
-        rarity: "Common",
-        icon: "⚪"
+        name: "COMMON",
+        chance: 60,
+        class: "common",
+        cards: [
+            "Странник",
+            "Новичок",
+            "Охотник"
+        ]
     },
+
     {
-        name: "Необычная карта",
-        rarity: "Uncommon",
-        icon: "🟢"
+        name: "UNCOMMON",
+        chance: 25,
+        class: "uncommon",
+        cards: [
+            "Воин",
+            "Разведчик",
+            "Маг"
+        ]
     },
+
     {
-        name: "Редкая карта",
-        rarity: "Rare",
-        icon: "🔵"
+        name: "RARE",
+        chance: 10,
+        class: "rare",
+        cards: [
+            "Аскеладд",
+            "Денджи",
+            "Клинок"
+        ]
     },
+
     {
-        name: "Эпическая карта",
-        rarity: "Epic",
-        icon: "🟣"
+        name: "EPIC",
+        chance: 4,
+        class: "epic",
+        cards: [
+            "Макима",
+            "Демон",
+            "Повелитель"
+        ]
     },
+
     {
-        name: "Легендарная карта",
-        rarity: "Legendary",
-        icon: "🟡"
+        name: "LEGENDARY",
+        chance: 0.9,
+        class: "legendary",
+        cards: [
+            "Бог войны",
+            "Король мира",
+            "Избранный"
+        ]
+    },
+
+    {
+        name: "MYTHIC",
+        chance: 0.1,
+        class: "mythic",
+        cards: [
+            "???",
+            "Абсолют",
+            "Верховный"
+        ]
     }
+
 ];
+
+
+function getRarity() {
+
+    const random = Math.random() * 100;
+
+    let current = 0;
+
+    for (const rarity of rarities) {
+
+        current += rarity.chance;
+
+        if (random < current) {
+            return rarity;
+        }
+
+    }
+
+    return rarities[0];
+}
+
 
 function openPack() {
 
     if (coins < 100) {
+
         alert("Недостаточно монет!");
+
         return;
     }
+
+    const button = document.getElementById("openButton");
+    const card = document.getElementById("card");
 
     coins -= 100;
 
     document.getElementById("coins").textContent = coins;
 
-    const randomCard =
-        cards[Math.floor(Math.random() * cards.length)];
+    button.disabled = true;
 
-    document.getElementById("icon").textContent =
-        randomCard.icon;
+    card.classList.add("opening");
 
-    document.getElementById("name").textContent =
-        randomCard.name;
+    document.getElementById("icon").textContent = "✨";
 
-    document.getElementById("rarity").textContent =
-        randomCard.rarity;
+    document.getElementById("name").textContent = "Открываем...";
+
+    document.getElementById("rarity").textContent = "";
+
+    document.getElementById("chance").textContent =
+        "Определяем редкость...";
+
+
+    setTimeout(() => {
+
+        const rarity = getRarity();
+
+        const randomCard =
+            rarity.cards[
+                Math.floor(Math.random() * rarity.cards.length)
+            ];
+
+        document.getElementById("icon").textContent =
+            getIcon(rarity.name);
+
+        document.getElementById("name").textContent =
+            randomCard;
+
+        const rarityElement =
+            document.getElementById("rarity");
+
+        rarityElement.textContent =
+            "✦ " + rarity.name + " ✦";
+
+        rarityElement.className =
+            "rarity " + rarity.class;
+
+        document.getElementById("chance").textContent =
+            "Шанс: " + rarity.chance + "%";
+
+        card.classList.remove("opening");
+
+        button.disabled = false;
+
+    }, 1200);
+
+}
+
+
+function getIcon(rarity) {
+
+    switch(rarity) {
+
+        case "COMMON":
+            return "⚪";
+
+        case "UNCOMMON":
+            return "🟢";
+
+        case "RARE":
+            return "🔵";
+
+        case "EPIC":
+            return "🟣";
+
+        case "LEGENDARY":
+            return "🟡";
+
+        case "MYTHIC":
+            return "🔴";
+
+        default:
+            return "🎴";
+    }
+
 }
 
 </script>
