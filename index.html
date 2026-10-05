@@ -102,7 +102,6 @@ body {
         radial-gradient(circle at 50% 30%, #4a197d, #170b2c 60%, #08050e);
 
     border: 1px solid rgba(255,255,255,0.15);
-
     box-shadow:
         0 20px 50px rgba(0,0,0,0.5),
         0 0 35px rgba(143,55,255,0.15);
@@ -207,6 +206,71 @@ body {
 .open-button:disabled {
     opacity: 0.5;
     cursor: default;
+}
+
+/* DAILY REWARD */
+
+.daily-reward {
+    margin-top: 15px;
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,210,70,0.12),
+            rgba(255,255,255,0.05)
+        );
+
+    border: 1px solid rgba(255,216,77,0.18);
+
+    text-align: center;
+}
+
+.daily-title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.daily-description {
+    color: #aaa0b6;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.daily-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 13px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: linear-gradient(135deg, #d7a62f, #ffd84d);
+
+    color: #241700;
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: transform 0.15s, opacity 0.15s;
+}
+
+.daily-button:active {
+    transform: scale(0.97);
+}
+
+.daily-button:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.daily-status {
+    margin-top: 9px;
+    color: #9b8da7;
+    font-size: 11px;
 }
 
 /* COLLECTION */
@@ -317,78 +381,6 @@ body {
     margin-top: 5px;
 }
 
-/* DAILY REWARD */
-
-.daily-box {
-    margin-top: 20px;
-    padding: 20px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(143,61,255,0.22),
-            rgba(255,255,255,0.05)
-        );
-
-    border: 1px solid rgba(185,80,255,0.25);
-
-    text-align: center;
-}
-
-.daily-icon {
-    font-size: 55px;
-    margin-bottom: 8px;
-}
-
-.daily-title {
-    font-size: 22px;
-    font-weight: 900;
-}
-
-.daily-description {
-    color: #b0a2bb;
-    font-size: 13px;
-    margin-top: 7px;
-    line-height: 1.4;
-}
-
-.daily-reward {
-    margin-top: 14px;
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.daily-timer {
-    margin-top: 10px;
-    color: #b66cff;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.daily-button {
-    width: 100%;
-    margin-top: 16px;
-    padding: 15px;
-
-    border: none;
-    border-radius: 14px;
-
-    background: linear-gradient(135deg, #8b3dff, #d237ff);
-
-    color: white;
-    font-size: 16px;
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.daily-button:disabled {
-    opacity: 0.45;
-    cursor: default;
-}
-
 /* RARITIES */
 
 .rarity-COMMON {
@@ -486,33 +478,26 @@ body {
             🎁 ОТКРЫТЬ ПАК — 100 💰
         </button>
 
+
         <!-- DAILY REWARD -->
 
-        <div class="daily-box">
-
-            <div class="daily-icon">
-                🎁
-            </div>
+        <div class="daily-reward">
 
             <div class="daily-title">
-                Ежедневная награда
+                🎁 ЕЖЕДНЕВНАЯ НАГРАДА
             </div>
 
             <div class="daily-description">
                 Заходи каждый день и получай бесплатные монеты.
             </div>
 
-            <div class="daily-reward">
-                +500 💰
-            </div>
-
-            <div id="dailyTimer" class="daily-timer">
-                Награда доступна!
-            </div>
-
             <button id="dailyButton" class="daily-button">
-                ПОЛУЧИТЬ НАГРАДУ
+                ЗАБРАТЬ — 250 💰
             </button>
+
+            <div id="dailyStatus" class="daily-status">
+                Награда доступна
+            </div>
 
         </div>
 
@@ -553,7 +538,6 @@ body {
             <div class="profile-stats">
 
                 <div class="stat">
-
                     <div id="profileCards" class="stat-number">
                         0
                     </div>
@@ -561,11 +545,9 @@ body {
                     <div class="stat-label">
                         КАРТ СОБРАНО
                     </div>
-
                 </div>
 
                 <div class="stat">
-
                     <div id="profileCoins" class="stat-number">
                         1000
                     </div>
@@ -573,7 +555,6 @@ body {
                     <div class="stat-label">
                         МОНЕТ
                     </div>
-
                 </div>
 
             </div>
@@ -623,12 +604,11 @@ try {
    ЕЖЕДНЕВНАЯ НАГРАДА
 ========================================= */
 
-const DAILY_REWARD = 500;
-
+const DAILY_REWARD = 250;
 const DAILY_COOLDOWN = 24 * 60 * 60 * 1000;
 
 let lastDailyReward = Number(
-    localStorage.getItem("saysei_last_daily")
+    localStorage.getItem("saysei_daily_reward")
 );
 
 if (!Number.isFinite(lastDailyReward)) {
@@ -823,11 +803,6 @@ function saveGame() {
         JSON.stringify(collection)
     );
 
-    localStorage.setItem(
-        "saysei_last_daily",
-        String(lastDailyReward)
-    );
-
 }
 
 
@@ -837,8 +812,127 @@ function saveGame() {
 
 function updateCoins() {
 
-    document.getElementById("coins").textContent =
-        coins;
+    document.getElementById("coins").textContent = coins;
+
+}
+
+
+/* =========================================
+   СТАТУС ЕЖЕДНЕВНОЙ НАГРАДЫ
+========================================= */
+
+function updateDailyReward() {
+
+    const button =
+        document.getElementById("dailyButton");
+
+    const status =
+        document.getElementById("dailyStatus");
+
+    if (!button || !status) {
+        return;
+    }
+
+
+    const now = Date.now();
+
+    const remaining =
+        DAILY_COOLDOWN -
+        (now - lastDailyReward);
+
+
+    if (remaining <= 0) {
+
+        button.disabled = false;
+
+        button.textContent =
+            "ЗАБРАТЬ — 250 💰";
+
+        status.textContent =
+            "Награда доступна";
+
+        return;
+
+    }
+
+
+    button.disabled = true;
+
+
+    const totalSeconds =
+        Math.ceil(remaining / 1000);
+
+    const hours =
+        Math.floor(totalSeconds / 3600);
+
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) / 60
+        );
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    button.textContent =
+        "НАГРАДА ПОЛУЧЕНА";
+
+
+    status.textContent =
+        "Следующая награда через " +
+        String(hours).padStart(2, "0") +
+        ":" +
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+
+}
+
+
+/* =========================================
+   ПОЛУЧЕНИЕ ЕЖЕДНЕВНОЙ НАГРАДЫ
+========================================= */
+
+function claimDailyReward() {
+
+    const now = Date.now();
+
+
+    if (
+        now - lastDailyReward <
+        DAILY_COOLDOWN
+    ) {
+
+        updateDailyReward();
+
+        return;
+
+    }
+
+
+    coins += DAILY_REWARD;
+
+    lastDailyReward = now;
+
+
+    localStorage.setItem(
+        "saysei_daily_reward",
+        String(lastDailyReward)
+    );
+
+
+    saveGame();
+
+    updateCoins();
+
+    updateProfile();
+
+    updateDailyReward();
+
+
+    alert(
+        "🎉 Ежедневная награда получена!\n\n+250 💰"
+    );
 
 }
 
@@ -899,20 +993,17 @@ function openPack() {
 
     button.disabled = true;
 
+
     card.classList.add("opening");
 
 
-    document.getElementById("cardArt").textContent =
-        "✨";
+    document.getElementById("cardArt").textContent = "✨";
 
-    document.getElementById("cardId").textContent =
-        "#???";
+    document.getElementById("cardId").textContent = "#???";
 
-    document.getElementById("cardRarity").textContent =
-        "OPENING";
+    document.getElementById("cardRarity").textContent = "OPENING";
 
-    document.getElementById("cardRarity").className =
-        "rarity";
+    document.getElementById("cardRarity").className = "rarity";
 
     document.getElementById("cardName").textContent =
         "Открываем...";
@@ -975,122 +1066,8 @@ function openPack() {
 
         updateProfile();
 
+
     }, 1200);
-
-}
-
-
-/* =========================================
-   ЕЖЕДНЕВНАЯ НАГРАДА
-========================================= */
-
-function canClaimDaily() {
-
-    const now = Date.now();
-
-    return (
-        now - lastDailyReward >=
-        DAILY_COOLDOWN
-    );
-
-}
-
-
-function claimDailyReward() {
-
-    if (!canClaimDaily()) {
-        return;
-    }
-
-
-    coins += DAILY_REWARD;
-
-    lastDailyReward = Date.now();
-
-
-    saveGame();
-
-    updateCoins();
-
-    updateProfile();
-
-    updateDailyReward();
-
-
-    alert(
-        "🎁 Ежедневная награда получена!\n\n+500 💰"
-    );
-
-}
-
-
-function formatTime(milliseconds) {
-
-    let totalSeconds =
-        Math.floor(milliseconds / 1000);
-
-
-    const hours =
-        Math.floor(totalSeconds / 3600);
-
-    totalSeconds %= 3600;
-
-
-    const minutes =
-        Math.floor(totalSeconds / 60);
-
-    const seconds =
-        totalSeconds % 60;
-
-
-    return (
-        String(hours).padStart(2, "0") +
-        ":" +
-        String(minutes).padStart(2, "0") +
-        ":" +
-        String(seconds).padStart(2, "0")
-    );
-
-}
-
-
-function updateDailyReward() {
-
-    const button =
-        document.getElementById("dailyButton");
-
-    const timer =
-        document.getElementById("dailyTimer");
-
-
-    if (canClaimDaily()) {
-
-        button.disabled = false;
-
-        button.textContent =
-            "ПОЛУЧИТЬ НАГРАДУ";
-
-        timer.textContent =
-            "🎁 Награда доступна!";
-
-        return;
-
-    }
-
-
-    const remaining =
-        DAILY_COOLDOWN -
-        (Date.now() - lastDailyReward);
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "НАГРАДА ПОЛУЧЕНА";
-
-    timer.textContent =
-        "Следующая награда через " +
-        formatTime(remaining);
 
 }
 
@@ -1107,7 +1084,6 @@ function showSection(section) {
         "profileSection"
     ];
 
-
     sections.forEach(function(id) {
 
         document
@@ -1122,7 +1098,6 @@ function showSection(section) {
         "collectionButton",
         "profileButton"
     ];
-
 
     buttons.forEach(function(id) {
 
@@ -1187,4 +1162,187 @@ function renderCollection() {
     const grid =
         document.getElementById("collectionGrid");
 
-    
+
+    grid.innerHTML = "";
+
+
+    cards.forEach(function(card) {
+
+        const owned =
+            collection[card.id] &&
+            collection[card.id].count > 0;
+
+
+        const element =
+            document.createElement("div");
+
+
+        element.className = "collection-card";
+
+
+        if (owned) {
+
+            element.innerHTML = `
+
+                <div class="collection-icon">
+                    ${card.icon}
+                </div>
+
+                <div class="collection-name">
+                    ${card.name}
+                </div>
+
+                <div class="collection-rarity">
+                    ${card.rarity}
+                </div>
+
+                <div class="collection-count">
+                    ×${collection[card.id].count}
+                </div>
+
+            `;
+
+        } else {
+
+            element.innerHTML = `
+
+                <div class="collection-icon">
+                    ❓
+                </div>
+
+                <div class="collection-name">
+                    ???
+                </div>
+
+                <div class="collection-rarity">
+                    UNKNOWN
+                </div>
+
+                <div class="collection-count">
+                    Не получена
+                </div>
+
+            `;
+
+        }
+
+
+        grid.appendChild(element);
+
+    });
+
+}
+
+
+/* =========================================
+   ПРОФИЛЬ
+========================================= */
+
+function updateProfile() {
+
+    let collected = 0;
+
+
+    cards.forEach(function(card) {
+
+        if (
+            collection[card.id] &&
+            collection[card.id].count > 0
+        ) {
+
+            collected++;
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "profileCards"
+    ).textContent = collected;
+
+
+    document.getElementById(
+        "profileCoins"
+    ).textContent = coins;
+
+}
+
+
+/* =========================================
+   ПОДКЛЮЧАЕМ КНОПКИ
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        document
+            .getElementById("openButton")
+            .addEventListener(
+                "click",
+                openPack
+            );
+
+
+        document
+            .getElementById("dailyButton")
+            .addEventListener(
+                "click",
+                claimDailyReward
+            );
+
+
+        document
+            .getElementById("gameButton")
+            .addEventListener(
+                "click",
+                function() {
+                    showSection("game");
+                }
+            );
+
+
+        document
+            .getElementById("collectionButton")
+            .addEventListener(
+                "click",
+                function() {
+                    showSection("collection");
+                }
+            );
+
+
+        document
+            .getElementById("profileButton")
+            .addEventListener(
+                "click",
+                function() {
+                    showSection("profile");
+                }
+            );
+
+
+        updateCoins();
+
+        renderCollection();
+
+        updateProfile();
+
+        updateDailyReward();
+
+
+        setInterval(
+            updateDailyReward,
+            1000
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+
+          
