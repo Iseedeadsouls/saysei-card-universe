@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,150 +16,418 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     background:
-        radial-gradient(circle at top, #29234d 0%, #0d0b16 45%, #07070c 100%);
+        radial-gradient(
+            circle at 50% -10%,
+            #40306e 0%,
+            #171326 35%,
+            #07070c 75%
+        );
+
     color: white;
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
 }
 
 .game {
     width: 100%;
     max-width: 430px;
-    padding: 25px 18px;
+    margin: auto;
+    padding: 22px 16px 40px;
 }
 
 .logo {
     text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
 .subtitle {
     text-align: center;
-    color: #aaa;
+    color: #999;
+    font-size: 13px;
+    letter-spacing: 4px;
     margin-top: 4px;
 }
 
 .balance {
-    margin: 25px 0 15px;
+    margin: 22px 0;
     padding: 12px;
+
     border-radius: 14px;
-    background: rgba(255,255,255,0.06);
+
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.07);
+
     color: #ffd95a;
-    font-size: 18px;
     text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }
+
+
+/* MAIN CARD */
 
 .card {
-    height: 360px;
-    border-radius: 24px;
-    background: linear-gradient(145deg, #222235, #11111b);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+
+    height: 470px;
+
+    overflow: hidden;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #29283b,
+            #0d0d15
+        );
+
+    border: 2px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.65);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end/* MAIN MENU */
+
+.menu {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.card-icon {
-    font-size: 100px;
-    margin-bottom: 25px;
+.menu button {
+    margin-top: 0;
+}
+
+.menu .collection-button {
+    margin-top: 0;
+}
+
+
+/* MAIN CARD */;
+
+    padding: 25px;
+
+    transition: .3s;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(120,80,255,.18);
+
+    filter: blur(60px);
+
+    top: -100px;
+}
+
+.card-art {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+    right: 25px;
+
+    height: 300px;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #514d76,
+            #242238 45%,
+            #101019 100%
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.card-art-symbol {
+    font-size: 115px;
+
+    filter:
+        drop-shadow(
+            0 15px 25px rgba(0,0,0,.6)
+        );
+}
+
+.card-id {
+    position: absolute;
+
+    top: 12px;
+    left: 14px;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(0,0,0,.55);
+
+    font-size: 12px;
+
+    color: #bbb;
+}
+
+.card-rarity {
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(0,0,0,.55);
+
+    font-size: 11px;
+
+    font-weight: bold;
 }
 
 .card-name {
-    font-size: 25px;
-    font-weight: bold;
+    position: relative;
+
+    font-size: 27px;
+    font-weight: 900;
+
+    margin-top: 10px;
+
     text-align: center;
 }
 
-.rarity {
-    margin-top: 12px;
-    font-size: 18px;
-    font-weight: bold;
+.card-role {
+    position: relative;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    margin-top: 5px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
-.chance {
-    margin-top: 7px;
-    color: #999;
-    font-size: 13px;
+.card-chance {
+    position: relative;
+
+    color: #777;
+
+    font-size: 12px;
+
+    margin-top: 8px;
 }
+
+
+/* BUTTONS */
 
 button {
-    margin-top: 15px;
     width: 100%;
+
+    margin-top: 14px;
+
     padding: 17px;
+
     border: none;
+
     border-radius: 15px;
-    background: linear-gradient(135deg, #7655ff, #5435d6);
+
     color: white;
-    font-size: 18px;
+
+    font-size: 17px;
+
     font-weight: bold;
-    box-shadow: 0 8px 25px rgba(100,70,255,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            #7655ff,
+            #5131d1
+        );
+
+    box-shadow:
+        0 8px 25px rgba(100,70,255,.3);
 }
 
 button:active {
-    transform: scale(0.97);
+    transform: scale(.97);
 }
 
 button:disabled {
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .collection-button {
-    background: linear-gradient(135deg, #252538, #171724);
+    background:
+        linear-gradient(
+            135deg,
+            #29283c,
+            #151520
+        );
+
     box-shadow: none;
-    border: 1px solid rgba(255,255,255,0.1);
+
+    border: 1px solid rgba(255,255,255,.1);
 }
+
+
+/* COLLECTION */
 
 .collection {
     display: none;
-    margin-top: 25px;
+
+    margin-top: 28px;
 }
 
 .collection-title {
-    font-size: 23px;
-    font-weight: bold;
-    margin-bottom: 15px;
+    font-size: 24px;
+
+    font-weight: 900;
+
+    margin-bottom: 5px;
+}
+
+.collection-subtitle {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 17px;
 }
 
 .collection-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
     gap: 12px;
 }
 
 .collection-card {
-    padding: 18px 10px;
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 10px;
+
     border-radius: 18px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #20202e,
+            #101016
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    overflow: hidden;
 }
 
-.collection-icon {
-    font-size: 45px;
+.collection-art {
+    height: 135px;
+
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle,
+            #45425f,
+            #15151e
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 55px;
+}
+
+.collection-number {
+    position: absolute;
+
+    top: 17px;
+    left: 17px;
+
+    background: rgba(0,0,0,.6);
+
+    padding: 3px 6px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    color: #aaa;
 }
 
 .collection-name {
-    margin-top: 8px;
+    margin-top: 9px;
+
+    font-size: 14px;
+
     font-weight: bold;
 }
 
 .collection-rarity {
-    font-size: 12px;
-    margin-top: 5px;
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    font-weight: bold;
 }
 
 .collection-count {
-    margin-top: 8px;
-    color: #aaa;
-    font-size: 13px;
+    margin-top: 5px;
+
+    color: #888;
+
+    font-size: 11px;
 }
+
+.unknown {
+    opacity: .4;
+}
+
+.unknown .collection-art {
+    filter: grayscale(1);
+}
+
+.unknown .collection-name {
+    color: #666;
+}
+
+
+/* RARITIES */
 
 .common {
     color: #aaa;
@@ -182,17 +451,80 @@ button:disabled {
 
 .mythic {
     color: #ff4b5c;
-    text-shadow: 0 0 15px rgba(255,60,80,0.8);
+
+    text-shadow:
+        0 0 15px rgba(255,60,80,.8);
 }
 
+
+/* CARD RARITY EFFECTS */
+
+.card.common {
+    border-color: #555;
+}
+
+.card.uncommon {
+    border-color: #35b85c;
+}
+
+.card.rare {
+    border-color: #428de0;
+
+    box-shadow:
+        0 0 30px rgba(70,150,255,.25),
+        0 25px 70px rgba(0,0,0,.6);
+}
+
+.card.epic {
+    border-color: #984cff;
+
+    box-shadow:
+        0 0 40px rgba(160,70,255,.3),
+        0 25px 70px rgba(0,0,0,.6);
+}
+
+.card.legendary {
+    border-color: #e8bb22;
+
+    box-shadow:
+        0 0 50px rgba(255,210,50,.3),
+        0 25px 70px rgba(0,0,0,.6);
+}
+
+.card.mythic {
+    border-color: #ff334f;
+
+    box-shadow:
+        0 0 60px rgba(255,40,70,.4),
+        0 25px 70px rgba(0,0,0,.6);
+}
+
+
+/* CREATOR CARD */
+
+.card.creator {
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 70px rgba(255,255,255,.45),
+        0 25px 70px rgba(0,0,0,.7);
+}
+
+.creator-text {
+    color: white;
+}
+
+
+/* ANIMATION */
+
 .opening {
-    animation: shake 0.5s infinite;
+    animation: shake .45s infinite;
 }
 
 @keyframes shake {
 
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     25% {
@@ -200,7 +532,7 @@ button:disabled {
     }
 
     50% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
     75% {
@@ -208,17 +540,21 @@ button:disabled {
     }
 
     100% {
-        transform: rotate(0deg);
+        transform: rotate(0);
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="game">
+
 
     <div class="logo">
         🎴 SAYSEI
@@ -232,30 +568,79 @@ button:disabled {
     <div class="balance">
         💰 <span id="coins">1000</span>
     </div>
+<div class="menu">
 
+    <button onclick="showSection('game')">
+        🎁 ОТКРЫТЬ ПАК
+    </button>
+
+    <button
+        class="collection-button"
+        onclick="showSection('collection')"
+    >
+        🃏 КОЛЛЕКЦИЯ
+    </button>
+
+    <button
+        class="collection-button"
+        onclick="showSection('profile')"
+    >
+        👤 ПРОФИЛЬ
+    </button>
+
+</div>
 
     <div class="card" id="card">
 
-        <div class="card-icon" id="icon">
-            🎁
+
+        <div class="card-art">
+
+            <div class="card-id" id="cardId">
+                #???
+            </div>
+
+            <div class="card-rarity" id="cardRarity">
+                CARD
+            </div>
+
+            <div
+                class="card-art-symbol"
+                id="icon"
+            >
+                🎁
+            </div>
+
         </div>
+
 
         <div class="card-name" id="name">
             Открой свой пак
         </div>
 
-        <div class="rarity" id="rarity">
-            ?
+
+        <div
+            class="card-role"
+            id="role"
+        >
+            SAYSEI CARDUNIVERSE
         </div>
 
-        <div class="chance" id="chance">
+
+        <div
+            class="card-chance"
+            id="chance"
+        >
             Стоимость: 100 💰
         </div>
+
 
     </div>
 
 
-    <button onclick="openPack()" id="openButton">
+    <button
+        onclick="openPack()"
+        id="openButton"
+    >
         🎁 ОТКРЫТЬ ПАК — 100 💰
     </button>
 
@@ -269,146 +654,254 @@ button:disabled {
     </button>
 
 
-    <div class="collection" id="collection">
+    <div
+        class="collection"
+        id="collection"
+    >
 
         <div class="collection-title">
-            🃏 Моя коллекция
+            🃏 Коллекция
         </div>
 
-        <div class="collection-grid" id="collectionGrid"></div>
+        <div class="collection-subtitle">
+            Собрано:
+            <span id="collectionCount">
+                0
+            </span>
+            / 18
+        </div>
+
+        <div
+            class="collection-grid"
+            id="collectionGrid"
+        ></div>
 
     </div>
+
 
 </div>
 
 
 <script>
 
-let coins = Number(localStorage.getItem("saysei_coins")) || 1000;
+
+let coins =
+    Number(
+        localStorage.getItem(
+            "saysei_coins"
+        )
+    ) || 1000;
+
 
 let collection =
-    JSON.parse(localStorage.getItem("saysei_collection")) || {};
+    JSON.parse(
+        localStorage.getItem(
+            "saysei_collection"
+        )
+    ) || {};
 
 
-const rarities = [
+/*
+    SAYSEI CARDUNIVERSE
+    ОСНОВНЫЕ ПЕРСОНАЖИ:
 
-    {
-        name: "COMMON",
-        chance: 60,
-        class: "common",
-        cards: [
-            "Странник",
-            "Новичок",
-            "Охотник"
-        ]
-    },
+    #001 SAYSEI
+    #002 ISEEDEADSOULS
 
-    {
-        name: "UNCOMMON",
-        chance: 25,
-        class: "uncommon",
-        cards: [
-            "Воин",
-            "Разведчик",
-            "Маг"
-        ]
-    },
+    Остальные персонажи пока
+    являются частью первой коллекции.
+*/
+
+
+const cards = [
 
     {
-        name: "RARE",
-        chance: 10,
-        class: "rare",
-        cards: [
-            "Аскеладд",
-            "Денджи",
-            "Клинок"
-        ]
-    },
-
-    {
-        name: "EPIC",
-        chance: 4,
-        class: "epic",
-        cards: [
-            "Макима",
-            "Демон",
-            "Повелитель"
-        ]
-    },
-
-    {
-        name: "LEGENDARY",
-        chance: 0.9,
-        class: "legendary",
-        cards: [
-            "Бог войны",
-            "Король мира",
-            "Избранный"
-        ]
-    },
-
-    {
-        name: "MYTHIC",
-        chance: 0.1,
+        id: 1,
+        name: "SaySei",
+        rarity: "MYTHIC",
+        chance: 0.05,
+        icon: "🌙",
         class: "mythic",
-        cards: [
-            "???",
-            "Абсолют",
-            "Верховный"
-        ]
+        role: "Главная героиня"
+    },
+
+    {
+        id: 2,
+        name: "iseedeadsouls",
+        rarity: "MYTHIC",
+        chance: 0.01,
+        icon: "👁️",
+        class: "creator",
+        role: "Создатель вселенной"
+    },
+
+
+    {
+        id: 3,
+        name: "Странник",
+        rarity: "COMMON",
+        chance: 19.98,
+        icon: "⚪",
+        class: "common",
+        role: "Житель вселенной"
+    },
+
+    {
+        id: 4,
+        name: "Новичок",
+        rarity: "COMMON",
+        chance: 19.98,
+        icon: "⚪",
+        class: "common",
+        role: "Житель вселенной"
+    },
+
+    {
+        id: 5,
+        name: "Охотник",
+        rarity: "COMMON",
+        chance: 19.98,
+        icon: "⚪",
+        class: "common",
+        role: "Охотник"
+    },
+
+
+    {
+        id: 6,
+        name: "Воин",
+        rarity: "UNCOMMON",
+        chance: 8.33,
+        icon: "🟢",
+        class: "uncommon",
+        role: "Воин"
+    },
+
+    {
+        id: 7,
+        name: "Разведчик",
+        rarity: "UNCOMMON",
+        chance: 8.33,
+        icon: "🟢",
+        class: "uncommon",
+        role: "Разведчик"
+    },
+
+    {
+        id: 8,
+        name: "Маг",
+        rarity: "UNCOMMON",
+        chance: 8.33,
+        icon: "🟢",
+        class: "uncommon",
+        role: "Маг"
+    },
+
+
+    {
+        id: 9,
+        name: "Аскеладд",
+        rarity: "RARE",
+        chance: 1.66,
+        icon: "🔵",
+        class: "rare",
+        role: "Стратег"
+    },
+
+    {
+        id: 10,
+        name: "Денджи",
+        rarity: "RARE",
+        chance: 1.66,
+        icon: "🔵",
+        class: "rare",
+        role: "Охотник на демонов"
+    },
+
+    {
+        id: 11,
+        name: "Клинок",
+        rarity: "RARE",
+        chance: 1.68,
+        icon: "🔵",
+        class: "rare",
+        role: "Воин"
+    },
+
+
+    {
+        id: 12,
+        name: "Макима",
+        rarity: "EPIC",
+        chance: 0.44,
+        icon: "🟣",
+        class: "epic",
+        role: "Контроль"
+    },
+
+    {
+        id: 13,
+        name: "Демон",
+        rarity: "EPIC",
+        chance: 0.44,
+        icon: "🟣",
+        class: "epic",
+        role: "Сущность"
+    },
+
+    {
+        id: 14,
+        name: "Повелитель",
+        rarity: "EPIC",
+        chance: 0.45,
+        icon: "🟣",
+        class: "epic",
+        role: "Властитель"
+    },
+
+
+    {
+        id: 15,
+        name: "Бог войны",
+        rarity: "LEGENDARY",
+        chance: 0.12,
+        icon: "🟡",
+        class: "legendary",
+        role: "Божественная сущность"
+    },
+
+    {
+        id: 16,
+        name: "Король мира",
+        rarity: "LEGENDARY",
+        chance: 0.12,
+        icon: "🟡",
+        class: "legendary",
+        role: "Верховный правитель"
+    },
+
+    {
+        id: 17,
+        name: "Избранный",
+        rarity: "LEGENDARY",
+        chance: 0.12,
+        icon: "🟡",
+        class: "legendary",
+        role: "Избранный"
+    },
+
+
+    {
+        id: 18,
+        name: "???",
+        rarity: "MYTHIC",
+        chance: 0.01,
+        icon: "🔴",
+        class: "mythic",
+        role: "Неизвестно"
     }
 
 ];
-
-
-function getRarity() {
-
-    const random = Math.random() * 100;
-
-    let current = 0;
-
-    for (const rarity of rarities) {
-
-        current += rarity.chance;
-
-        if (random < current) {
-            return rarity;
-        }
-
-    }
-
-    return rarities[0];
-}
-
-
-function getIcon(rarity) {
-
-    switch (rarity) {
-
-        case "COMMON":
-            return "⚪";
-
-        case "UNCOMMON":
-            return "🟢";
-
-        case "RARE":
-            return "🔵";
-
-        case "EPIC":
-            return "🟣";
-
-        case "LEGENDARY":
-            return "🟡";
-
-        case "MYTHIC":
-            return "🔴";
-
-        default:
-            return "🎴";
-
-    }
-
-}
 
 
 function saveData() {
@@ -426,49 +919,64 @@ function saveData() {
 }
 
 
-function addToCollection(cardName, rarity) {
+function getRandomCard() {
 
-    const id = rarity.name + "_" + cardName;
+    let random =
+        Math.random() * 100;
 
-    if (!collection[id]) {
+    let current = 0;
 
-        collection[id] = {
-            name: cardName,
-            rarity: rarity.name,
-            class: rarity.class,
-            count: 0
-        };
+
+    for (const card of cards) {
+
+        current += card.chance;
+
+        if (random < current) {
+
+            return card;
+
+        }
 
     }
 
-    collection[id].count++;
 
-    saveData();
+    return cards[2];
 
 }
 
 
 function openPack() {
 
+
     if (coins < 100) {
 
-        alert("Недостаточно монет!");
+        alert(
+            "Недостаточно монет!"
+        );
 
         return;
+
     }
 
 
     const button =
-        document.getElementById("openButton");
+        document.getElementById(
+            "openButton"
+        );
 
-    const card =
-        document.getElementById("card");
+
+    const cardElement =
+        document.getElementById(
+            "card"
+        );
 
 
     coins -= 100;
 
-    document.getElementById("coins").textContent =
-        coins;
+
+    document.getElementById(
+        "coins"
+    ).textContent = coins;
 
 
     saveData();
@@ -476,71 +984,126 @@ function openPack() {
 
     button.disabled = true;
 
-    card.classList.add("opening");
+
+    cardElement.className =
+        "card opening";
 
 
-    document.getElementById("icon").textContent =
-        "✨";
+    document.getElementById(
+        "icon"
+    ).textContent = "✨";
 
-    document.getElementById("name").textContent =
+
+    document.getElementById(
+        "cardId"
+    ).textContent = "#???";
+
+
+    document.getElementById(
+        "cardRarity"
+    ).textContent = "OPENING";
+
+
+    document.getElementById(
+        "name"
+    ).textContent =
         "Открываем...";
 
-    document.getElementById("rarity").textContent =
-        "";
 
-    document.getElementById("chance").textContent =
-        "Определяем редкость...";
+    document.getElementById(
+        "role"
+    ).textContent =
+        "Определяем судьбу...";
+
+
+    document.getElementById(
+        "chance"
+    ).textContent =
+        "Определяем карту...";
 
 
     setTimeout(() => {
 
-        const rarity = getRarity();
 
-        const randomCard =
-            rarity.cards[
-                Math.floor(
-                    Math.random() *
-                    rarity.cards.length
-                )
-            ];
+        const result =
+            getRandomCard();
 
 
-        addToCollection(
-            randomCard,
-            rarity
-        );
+        document.getElementById(
+            "icon"
+        ).textContent =
+            result.icon;
 
 
-        document.getElementById("icon").textContent =
-            getIcon(rarity.name);
+        document.getElementById(
+            "cardId"
+        ).textContent =
+            "#" +
+            String(result.id)
+                .padStart(3, "0");
 
 
-        document.getElementById("name").textContent =
-            randomCard;
+        document.getElementById(
+            "cardRarity"
+        ).textContent =
+            result.rarity;
 
 
-        const rarityElement =
-            document.getElementById("rarity");
+        document.getElementById(
+            "name"
+        ).textContent =
+            result.name;
 
 
-        rarityElement.textContent =
-            "✦ " + rarity.name + " ✦";
+        document.getElementById(
+            "role"
+        ).textContent =
+            result.role;
 
 
-        rarityElement.className =
-            "rarity " + rarity.class;
+        document.getElementById(
+            "chance"
+        ).textContent =
+            "Шанс выпадения: " +
+            result.chance +
+            "%";
 
 
-        document.getElementById("chance").textContent =
-            "Шанс: " + rarity.chance + "%";
+        cardElement.className =
+            "card " +
+            result.class;
 
 
-        card.classList.remove("opening");
+        if (!collection[result.id]) {
+
+            collection[result.id] = {
+
+                count: 0,
+
+                name: result.name,
+
+                rarity: result.rarity,
+
+                class: result.class,
+
+                role: result.role
+
+            };
+
+        }
+
+
+        collection[result.id].count++;
+
+
+        saveData();
+
 
         button.disabled = false;
 
 
         renderCollection();
+
 
     }, 1200);
 
@@ -549,28 +1112,41 @@ function openPack() {
 
 function toggleCollection() {
 
-    const collectionElement =
-        document.getElementById("collection");
+
+    const element =
+        document.getElementById(
+            "collection"
+        );
+
 
     const button =
-        document.getElementById("collectionButton");
+        document.getElementById(
+            "collectionButton"
+        );
 
 
     if (
-        collectionElement.style.display === "block"
+        element.style.display ===
+        "block"
     ) {
 
-        collectionElement.style.display = "none";
+        element.style.display =
+            "none";
+
 
         button.textContent =
             "🃏 МОЯ КОЛЛЕКЦИЯ";
 
+
     } else {
 
-        collectionElement.style.display = "block";
+        element.style.display =
+            "block";
+
 
         button.textContent =
             "🔽 СКРЫТЬ КОЛЛЕКЦИЮ";
+
 
         renderCollection();
 
@@ -581,60 +1157,95 @@ function toggleCollection() {
 
 function renderCollection() {
 
+
     const grid =
-        document.getElementById("collectionGrid");
+        document.getElementById(
+            "collectionGrid"
+        );
 
 
     grid.innerHTML = "";
 
 
-    const cards =
-        Object.values(collection);
-
-
-    if (cards.length === 0) {
-
-        grid.innerHTML = `
-            <div style="
-                grid-column: 1 / -1;
-                color: #888;
-                padding: 30px;
-            ">
-                Коллекция пока пуста.<br>
-                Открой свой первый пак!
-            </div>
-        `;
-
-        return;
-    }
+    let collected = 0;
 
 
     cards.forEach(card => {
 
+
+        const owned =
+            collection[card.id];
+
+
+        if (owned) {
+
+            collected++;
+
+        }
+
+
         const element =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
 
         element.className =
-            "collection-card";
+            "collection-card " +
+            (
+                owned
+                ? ""
+                : "unknown"
+            );
 
 
         element.innerHTML = `
 
-            <div class="collection-icon">
-                ${getIcon(card.rarity)}
+            <div class="collection-art">
+
+                ${
+                    owned
+                    ? card.icon
+                    : "?"
+                }
+
+            </div>
+
+            <div class="collection-number">
+
+                #${String(card.id).padStart(3,"0")}
+
             </div>
 
             <div class="collection-name">
-                ${card.name}
+
+                ${
+                    owned
+                    ? card.name
+                    : "???"
+                }
+
             </div>
 
             <div class="collection-rarity ${card.class}">
-                ✦ ${card.rarity} ✦
+
+                ${
+                    owned
+                    ? "✦ " + card.rarity + " ✦"
+                    : "UNKNOWN"
+                }
+
             </div>
 
             <div class="collection-count">
-                Получено: x${card.count}
+
+                ${
+                    owned
+                    ? "Получено: x" +
+                      owned.count
+                    : "Не получена"
+                }
+
             </div>
 
         `;
@@ -644,14 +1255,22 @@ function renderCollection() {
 
     });
 
+
+    document.getElementById(
+        "collectionCount"
+    ).textContent =
+        collected;
+
 }
 
 
-document.getElementById("coins").textContent =
-    coins;
+document.getElementById(
+    "coins"
+).textContent = coins;
 
 
 renderCollection();
+
 
 </script>
 
