@@ -27,27 +27,29 @@ body {
     width: 100%;
     max-width: 430px;
     padding: 25px 18px;
-    text-align: center;
 }
 
 .logo {
+    text-align: center;
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 2px;
 }
 
 .subtitle {
+    text-align: center;
     color: #aaa;
     margin-top: 4px;
 }
 
 .balance {
-    margin: 25px 0;
+    margin: 25px 0 15px;
     padding: 12px;
     border-radius: 14px;
     background: rgba(255,255,255,0.06);
     color: #ffd95a;
     font-size: 18px;
+    text-align: center;
 }
 
 .card {
@@ -71,6 +73,7 @@ body {
 .card-name {
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
 }
 
 .rarity {
@@ -86,7 +89,7 @@ body {
 }
 
 button {
-    margin-top: 25px;
+    margin-top: 15px;
     width: 100%;
     padding: 17px;
     border: none;
@@ -102,16 +105,59 @@ button:active {
     transform: scale(0.97);
 }
 
-.opening {
-    animation: shake 0.5s infinite;
+button:disabled {
+    opacity: 0.5;
 }
 
-@keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(2deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-2deg); }
-    100% { transform: rotate(0deg); }
+.collection-button {
+    background: linear-gradient(135deg, #252538, #171724);
+    box-shadow: none;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.collection {
+    display: none;
+    margin-top: 25px;
+}
+
+.collection-title {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.collection-card {
+    padding: 18px 10px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+}
+
+.collection-icon {
+    font-size: 45px;
+}
+
+.collection-name {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+.collection-rarity {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.collection-count {
+    margin-top: 8px;
+    color: #aaa;
+    font-size: 13px;
 }
 
 .common {
@@ -139,6 +185,34 @@ button:active {
     text-shadow: 0 0 15px rgba(255,60,80,0.8);
 }
 
+.opening {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(2deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+
+}
+
 </style>
 </head>
 
@@ -146,12 +220,19 @@ button:active {
 
 <div class="game">
 
-    <div class="logo">🎴 SAYSEI</div>
-    <div class="subtitle">CARD UNIVERSE</div>
+    <div class="logo">
+        🎴 SAYSEI
+    </div>
+
+    <div class="subtitle">
+        CARD UNIVERSE
+    </div>
+
 
     <div class="balance">
         💰 <span id="coins">1000</span>
     </div>
+
 
     <div class="card" id="card">
 
@@ -173,16 +254,41 @@ button:active {
 
     </div>
 
+
     <button onclick="openPack()" id="openButton">
         🎁 ОТКРЫТЬ ПАК — 100 💰
     </button>
+
+
+    <button
+        class="collection-button"
+        onclick="toggleCollection()"
+        id="collectionButton"
+    >
+        🃏 МОЯ КОЛЛЕКЦИЯ
+    </button>
+
+
+    <div class="collection" id="collection">
+
+        <div class="collection-title">
+            🃏 Моя коллекция
+        </div>
+
+        <div class="collection-grid" id="collectionGrid"></div>
+
+    </div>
 
 </div>
 
 
 <script>
 
-let coins = 1000;
+let coins = Number(localStorage.getItem("saysei_coins")) || 1000;
+
+let collection =
+    JSON.parse(localStorage.getItem("saysei_collection")) || {};
+
 
 const rarities = [
 
@@ -275,75 +381,9 @@ function getRarity() {
 }
 
 
-function openPack() {
-
-    if (coins < 100) {
-
-        alert("Недостаточно монет!");
-
-        return;
-    }
-
-    const button = document.getElementById("openButton");
-    const card = document.getElementById("card");
-
-    coins -= 100;
-
-    document.getElementById("coins").textContent = coins;
-
-    button.disabled = true;
-
-    card.classList.add("opening");
-
-    document.getElementById("icon").textContent = "✨";
-
-    document.getElementById("name").textContent = "Открываем...";
-
-    document.getElementById("rarity").textContent = "";
-
-    document.getElementById("chance").textContent =
-        "Определяем редкость...";
-
-
-    setTimeout(() => {
-
-        const rarity = getRarity();
-
-        const randomCard =
-            rarity.cards[
-                Math.floor(Math.random() * rarity.cards.length)
-            ];
-
-        document.getElementById("icon").textContent =
-            getIcon(rarity.name);
-
-        document.getElementById("name").textContent =
-            randomCard;
-
-        const rarityElement =
-            document.getElementById("rarity");
-
-        rarityElement.textContent =
-            "✦ " + rarity.name + " ✦";
-
-        rarityElement.className =
-            "rarity " + rarity.class;
-
-        document.getElementById("chance").textContent =
-            "Шанс: " + rarity.chance + "%";
-
-        card.classList.remove("opening");
-
-        button.disabled = false;
-
-    }, 1200);
-
-}
-
-
 function getIcon(rarity) {
 
-    switch(rarity) {
+    switch (rarity) {
 
         case "COMMON":
             return "⚪";
@@ -365,9 +405,253 @@ function getIcon(rarity) {
 
         default:
             return "🎴";
+
     }
 
 }
+
+
+function saveData() {
+
+    localStorage.setItem(
+        "saysei_coins",
+        coins
+    );
+
+    localStorage.setItem(
+        "saysei_collection",
+        JSON.stringify(collection)
+    );
+
+}
+
+
+function addToCollection(cardName, rarity) {
+
+    const id = rarity.name + "_" + cardName;
+
+    if (!collection[id]) {
+
+        collection[id] = {
+            name: cardName,
+            rarity: rarity.name,
+            class: rarity.class,
+            count: 0
+        };
+
+    }
+
+    collection[id].count++;
+
+    saveData();
+
+}
+
+
+function openPack() {
+
+    if (coins < 100) {
+
+        alert("Недостаточно монет!");
+
+        return;
+    }
+
+
+    const button =
+        document.getElementById("openButton");
+
+    const card =
+        document.getElementById("card");
+
+
+    coins -= 100;
+
+    document.getElementById("coins").textContent =
+        coins;
+
+
+    saveData();
+
+
+    button.disabled = true;
+
+    card.classList.add("opening");
+
+
+    document.getElementById("icon").textContent =
+        "✨";
+
+    document.getElementById("name").textContent =
+        "Открываем...";
+
+    document.getElementById("rarity").textContent =
+        "";
+
+    document.getElementById("chance").textContent =
+        "Определяем редкость...";
+
+
+    setTimeout(() => {
+
+        const rarity = getRarity();
+
+        const randomCard =
+            rarity.cards[
+                Math.floor(
+                    Math.random() *
+                    rarity.cards.length
+                )
+            ];
+
+
+        addToCollection(
+            randomCard,
+            rarity
+        );
+
+
+        document.getElementById("icon").textContent =
+            getIcon(rarity.name);
+
+
+        document.getElementById("name").textContent =
+            randomCard;
+
+
+        const rarityElement =
+            document.getElementById("rarity");
+
+
+        rarityElement.textContent =
+            "✦ " + rarity.name + " ✦";
+
+
+        rarityElement.className =
+            "rarity " + rarity.class;
+
+
+        document.getElementById("chance").textContent =
+            "Шанс: " + rarity.chance + "%";
+
+
+        card.classList.remove("opening");
+
+        button.disabled = false;
+
+
+        renderCollection();
+
+    }, 1200);
+
+}
+
+
+function toggleCollection() {
+
+    const collectionElement =
+        document.getElementById("collection");
+
+    const button =
+        document.getElementById("collectionButton");
+
+
+    if (
+        collectionElement.style.display === "block"
+    ) {
+
+        collectionElement.style.display = "none";
+
+        button.textContent =
+            "🃏 МОЯ КОЛЛЕКЦИЯ";
+
+    } else {
+
+        collectionElement.style.display = "block";
+
+        button.textContent =
+            "🔽 СКРЫТЬ КОЛЛЕКЦИЮ";
+
+        renderCollection();
+
+    }
+
+}
+
+
+function renderCollection() {
+
+    const grid =
+        document.getElementById("collectionGrid");
+
+
+    grid.innerHTML = "";
+
+
+    const cards =
+        Object.values(collection);
+
+
+    if (cards.length === 0) {
+
+        grid.innerHTML = `
+            <div style="
+                grid-column: 1 / -1;
+                color: #888;
+                padding: 30px;
+            ">
+                Коллекция пока пуста.<br>
+                Открой свой первый пак!
+            </div>
+        `;
+
+        return;
+    }
+
+
+    cards.forEach(card => {
+
+        const element =
+            document.createElement("div");
+
+
+        element.className =
+            "collection-card";
+
+
+        element.innerHTML = `
+
+            <div class="collection-icon">
+                ${getIcon(card.rarity)}
+            </div>
+
+            <div class="collection-name">
+                ${card.name}
+            </div>
+
+            <div class="collection-rarity ${card.class}">
+                ✦ ${card.rarity} ✦
+            </div>
+
+            <div class="collection-count">
+                Получено: x${card.count}
+            </div>
+
+        `;
+
+
+        grid.appendChild(element);
+
+    });
+
+}
+
+
+document.getElementById("coins").textContent =
+    coins;
+
+
+renderCollection();
 
 </script>
 
